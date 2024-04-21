@@ -1,0 +1,22 @@
+{
+  "name": "@gildsmith/profile-client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gildsmith/profile-client.git"
+  },
+  "author": "Mateusz Chmielewski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gildsmith/profile-client/issues"
+  },
+  "homepage": "https://github.com/gildsmith/profile-client#readme",
+  "dependencies": {
+    "vue": "^3.4.23"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.4.5",
+    "vitest": "^1.5.0"
+  }
+}
