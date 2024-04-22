@@ -1,7 +1,7 @@
 {
   "name": "@gildsmith/profile-client",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gildsmith/profile-client.git"
