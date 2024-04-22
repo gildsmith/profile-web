@@ -13,7 +13,14 @@
   },
   "homepage": "https://github.com/gildsmith/profile-client#readme",
   "dependencies": {
-    "vue": "^3.4.23"
+    "@tabler/icons-vue": "^3.2.0",
+    "@vueuse/core": "^10.9.0",
+    "axios": "^1.6.8",
+    "pinia": "^2.1.7",
+    "typescript": "^5.4.5",
+    "vue": "^3.4.23",
+    "vue-router": "^4.3.2",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.4.5",
