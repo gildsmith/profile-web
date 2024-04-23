@@ -15,27 +15,42 @@ watch(formState, (state) => {
 </script>
 
 <template>
-    <form @submit.prevent="submitForm" class="grid gap-4">
-        <div class="grid gap-1">
+    <form @submit.prevent="submitForm" class="form">
+        <div class="wrapper">
             <label for="email">Email Address</label>
-            <input class="input" type="email" id="email" required v-model="formData.email">
-            <div v-if="formState.errors?.email" class="text-sm text-red-500">
-                {{ formState.errors.email[0] }}
-            </div>
+            <input v-model="formData.email" class="input" type="email" id="email" required>
+            <div v-if="formState.errors?.email" v-text="formState.errors.email[0]" class="error"/>
         </div>
-        <div class="grid gap-1">
+        <div class="wrapper">
             <label for="password">Password</label>
-            <input class="input" type="password" id="password" required v-model="formData.password">
-            <div v-if="formState.errors?.password" class="text-sm text-red-500">
-                {{ formState.errors.password[0] }}
-            </div>
+            <input v-model="formData.password" class="input" type="password" id="password" required>
             <PasswordStrength :password="formData.password"/>
+            <div v-if="formState.errors?.password" v-text="formState.errors.password[0]" class="error"/>
         </div>
-        <div>
+        <div class="wrapper wrapper--button">
             <button class="button" type="submit">
-                <span>Create New Account</span>
+                <span>Register</span>
                 <FormStatusIcon :status="formState.status"/>
             </button>
+            <div v-if="formState.errors?.common" v-text="formState.errors.common[0]" class="error"/>
         </div>
     </form>
 </template>
+
+<style scoped>
+.form {
+    @apply grid gap-4;
+}
+
+.wrapper {
+    @apply grid gap-1;
+}
+
+.wrapper--button {
+    @apply justify-start;
+}
+
+.error {
+    @apply text-sm text-red-500;
+}
+</style>

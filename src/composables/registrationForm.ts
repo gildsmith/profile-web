@@ -30,7 +30,7 @@ export function useRegistrationForm() {
             formState.status = 'success'
         }).catch((error) => {
             formState.status = 'error'
-            formState.errors = error.response.data.errors
+            formState.errors = error.response.data.errors || {common: ['Please try again later']}
         });
     }
 

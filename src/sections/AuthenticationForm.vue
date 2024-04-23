@@ -31,11 +31,12 @@ watch(formState, (state) => {
             <label for="remember">Remember</label>
             <input v-model="formData.remember" class="input" type="checkbox" id="remember">
         </div>
-        <div>
+        <div class="wrapper wrapper--button">
             <button class="button" type="submit">
                 <span>Log In</span>
                 <FormStatusIcon :status="formState.status"/>
             </button>
+            <div v-if="formState.errors?.common" v-text="formState.errors.common[0]" class="error"/>
         </div>
     </form>
 </template>
@@ -51,6 +52,10 @@ watch(formState, (state) => {
 
 .wrapper--checkbox {
     @apply flex flex-row-reverse items-center justify-end;
+}
+
+.wrapper--button {
+    @apply justify-start;
 }
 
 .error {
