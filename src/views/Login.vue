@@ -11,7 +11,7 @@ useTitle('Log In')
             <div class="form">
                 <h1>Welcome Back</h1>
                 <AuthenticationForm/>
-                <router-link :to="{name: 'auth.register'}" class="redirect">
+                <router-link :to="{name: 'profile.register'}" class="redirect">
                     First time here? Click here to create a new account.
                 </router-link>
             </div>

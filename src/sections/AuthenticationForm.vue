@@ -10,7 +10,7 @@ const {formData, formState, submitForm} = useAuthenticationForm()
 watch(formState, (state) => {
     if (state.status === 'success') {
         useUserStore().user = state.response
-        useRouter().push({name: 'auth.index'})
+        useRouter().push({name: 'profile.index'})
     }
 })
 </script>

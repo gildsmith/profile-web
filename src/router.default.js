@@ -1,8 +1,8 @@
 // noinspection JSUnresolvedReference
 
 const vendorRouteFiles = import.meta.glob([
-    '@composer/*/*/resources/js/auth/router.js',
-    '@npm/*/*/resources/js/auth/router.js',
+    '@composer/*/*/resources/js/auth/router.{ts,js}',
+    '@npm/*/*/resources/js/auth/router.{ts,js}',
 ], {
     import: 'default',
     eager: true,

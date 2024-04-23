@@ -9,7 +9,7 @@ const {formData, formState, submitForm} = useRegistrationForm()
 
 watch(formState, (state) => {
     if (state.status === 'success') {
-        useRouter().push({name: 'auth.success'})
+        useRouter().push({name: 'profile.success'})
     }
 })
 </script>

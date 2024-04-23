@@ -10,7 +10,7 @@ useTitle('Success!')
         <div class="wrapper">
             <h1>Registration Successful! 🎉</h1>
             <span>Your account needs verification. Please check your email for instructions.</span>
-            <router-link :to="{name: 'auth.login'}" class="button">
+            <router-link :to="{name: 'profile.login'}" class="button">
                 <span>Log In Now</span>
                 <IconArrowNarrowRight size="16" stroke="2"/>
             </router-link>

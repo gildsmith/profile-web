@@ -11,7 +11,7 @@ useTitle('Create New Account')
             <div class="form">
                 <h1>Create New Account</h1>
                 <RegistrationForm/>
-                <router-link :to="{name: 'auth.login'}" class="redirect">
+                <router-link :to="{name: 'profile.login'}" class="redirect">
                     Already have an account? Click here to log in.
                 </router-link>
             </div>

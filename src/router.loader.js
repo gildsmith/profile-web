@@ -23,10 +23,10 @@ const basePath = document.querySelector('meta[name="base-path"]')?.getAttribute(
  | Custom Router
  | ---------------------------------------------------------------------------
  * This block attempts to dynamically imports custom router definitions from
- * the 'resources/js/gildsmith/auth/router.js' file, or loads the default one.
+ * the custom override file, or loads the default one.
  */
 
-const discoverCustomRouter = import.meta.glob('@/gildsmith/auth/router.js', {
+const discoverCustomRouter = import.meta.glob('@/gildsmith/profile/router.js', {
     import: 'default',
     eager: true,
 })
@@ -49,10 +49,10 @@ const router = createRouter({
  */
 
 router.beforeEach(async (to) => {
-    const userStore = useUserStore() // this works just fine
+    const userStore = useUserStore()
     await userStore.fetch()
 
-    const featuresStore = useFeaturesStore() // this fails??? cannot access pinia store
+    const featuresStore = useFeaturesStore()
     await featuresStore.fetch()
 
     if (typeof to.meta.feature !== 'undefined') {
@@ -60,11 +60,11 @@ router.beforeEach(async (to) => {
     }
 
     if (to.meta.authenticated === false && userStore.authenticated) {
-        return {name: 'auth.index'}
+        return {name: 'profile.index'}
     }
 
     if (to.meta.authenticated === true && !userStore.authenticated) {
-        return {name: 'auth.login'}
+        return {name: 'profile.login'}
     }
 })
 
