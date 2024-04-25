@@ -1,25 +1,11 @@
-import globals from 'globals'
-import pluginVue from 'eslint-plugin-vue'
-
-import path from 'path'
-import {fileURLToPath} from 'url'
-import {FlatCompat} from '@eslint/eslintrc'
-import pluginJs from '@eslint/js'
-
-// mimic CommonJS variables -- not needed if using CommonJS
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({baseDirectory: __dirname, recommendedConfig: pluginJs.configs.recommended})
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+import pluginVue from "eslint-plugin-vue";
 
 export default [
-    {languageOptions: {globals: globals.browser}},
-    ...compat.extends('standard-with-typescript'),
-    ...pluginVue.configs['flat/recommended'],
-    {
-        languageOptions: {
-            parserOptions: {
-                project: ['tsconfig.json'],
-            },
-        },
-    },
-]
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...pluginVue.configs["flat/essential"],
+];

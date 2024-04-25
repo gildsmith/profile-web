@@ -6,42 +6,27 @@ useTitle('Create New Account')
 </script>
 
 <template>
-    <div class="container">
-        <div class="wrapper">
-            <div class="form">
+        <div class="formContainer">
+            <div class="formWrapper">
                 <h1>Create New Account</h1>
                 <RegistrationForm/>
-                <router-link :to="{name: 'profile.login'}" class="redirect">
+                <router-link :to="{name: 'profile.login'}" class="redirectButton">
                     Already have an account? Click here to log in.
                 </router-link>
             </div>
         </div>
-        <div class="decoration"/>
-    </div>
 </template>
 
 <style scoped>
-.container {
-    @apply grid min-h-full min-w-full;
-    @apply lg:grid-cols-7;
+.formContainer {
+    @apply min-h-full p-4 flex items-center justify-center;
 }
 
-.wrapper {
-    @apply min-h-full p-6 flex flex-col items-center justify-center;
-    @apply lg:col-span-3;
-}
-
-.form {
+.formWrapper {
     @apply max-w-sm w-full grid gap-4;
 }
 
-.redirect {
+.redirectButton {
     @apply text-sm underline;
-}
-
-.decoration {
-    @apply bg-slate-100;
-    @apply lg:col-span-4;
-    @apply max-lg:order-first;
 }
 </style>

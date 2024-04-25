@@ -6,42 +6,27 @@ useTitle('Log In')
 </script>
 
 <template>
-    <div class="container">
-        <div class="wrapper">
-            <div class="form">
-                <h1>Welcome Back</h1>
-                <AuthenticationForm/>
-                <router-link :to="{name: 'profile.register'}" class="redirect">
-                    First time here? Click here to create a new account.
-                </router-link>
-            </div>
+    <div class="formContainer">
+        <div class="formWrapper">
+            <h1>Welcome Back</h1>
+            <AuthenticationForm/>
+            <router-link :to="{name: 'profile.register'}" class="redirectButton">
+                First time here? Click here to create a new account.
+            </router-link>
         </div>
-        <div class="decoration"/>
     </div>
 </template>
 
 <style scoped>
-.container {
-    @apply grid min-h-full min-w-full;
-    @apply lg:grid-cols-7;
+.formContainer {
+    @apply min-h-full p-4 flex items-center justify-center;
 }
 
-.wrapper {
-    @apply min-h-full p-6 flex flex-col items-center justify-center;
-    @apply lg:col-span-3;
-}
-
-.form {
+.formWrapper {
     @apply max-w-sm w-full grid gap-4;
 }
 
-.redirect {
+.redirectButton {
     @apply text-sm underline;
-}
-
-.decoration {
-    @apply bg-slate-100;
-    @apply lg:col-span-4;
-    @apply max-lg:order-first;
 }
 </style>
