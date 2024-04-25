@@ -35,7 +35,10 @@ export function useAuthenticationForm() {
             }).catch((error) => {
                 formState.status = 'error'
                 formState.errors = error.response.data.errors || {common: ['Please try again later']}
-            });
+            })
+        }).catch((error) => {
+            formState.status = 'error'
+            formState.errors = error.response.data.errors || {common: ['Please try again later']}
         })
     }
 

@@ -1,16 +1,17 @@
 <script setup>
 import {useAuthenticationForm} from '../composables/authenticationForm.ts'
-import FormStatusIcon from '../components/FormStatusIcon.vue'
+import FormStatusIcon from '../widgets/FormStatus.vue'
 import {watch} from 'vue'
 import {useRouter} from 'vue-router'
 import {useUserStore} from '../stores/user.js'
 
 const {formData, formState, submitForm} = useAuthenticationForm()
+const router = useRouter()
 
 watch(formState, (state) => {
     if (state.status === 'success') {
         useUserStore().user = state.response
-        useRouter().push({name: 'profile.index'})
+        router.push({name: 'profile.index'})
     }
 })
 </script>

@@ -1,15 +1,16 @@
 <script setup>
 import {useRegistrationForm} from '../composables/registrationForm.ts'
-import PasswordStrength from '../components/PasswordStrength.vue'
-import FormStatusIcon from '../components/FormStatusIcon.vue'
+import PasswordStrength from '../widgets/PasswordStrength.vue'
+import FormStatusIcon from '../widgets/FormStatus.vue'
 import {watch} from 'vue'
 import {useRouter} from 'vue-router'
 
 const {formData, formState, submitForm} = useRegistrationForm()
+const router = useRouter()
 
 watch(formState, (state) => {
     if (state.status === 'success') {
-        useRouter().push({name: 'profile.success'})
+        router.push({name: 'profile.success'})
     }
 })
 </script>
