@@ -60,7 +60,7 @@ router.beforeEach(async (to) => {
     }
 
     if (to.meta.authenticated === false && userStore.authenticated) {
-        return {name: 'profile.index'}
+        return {name: 'profile.dashboard'}
     }
 
     if (to.meta.authenticated === true && !userStore.authenticated) {

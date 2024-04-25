@@ -1,14 +1,17 @@
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Success from './views/Success.vue'
-import Profile from './views/Index.vue'
+import Dashboard from './views/Dashboard.vue'
+
+// todo import dashboard children dynamically
 
 export default [
     {
-        name: 'profile.index',
+        name: 'profile.dashboard',
         path: '/',
-        component: Profile,
+        component: Dashboard,
         meta: {authenticated: true},
+        children: [/* todo! */],
     },
     {
         name: 'profile.login',
@@ -27,5 +30,10 @@ export default [
         path: '/success',
         component: Success,
         meta: {feature: 'registration'},
+    },
+    {
+        name: 'profile.fallback',
+        path: '/:fallback(.*)*',
+        redirect: {name: 'profile.dashboard'},
     },
 ]

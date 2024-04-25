@@ -11,7 +11,7 @@ const router = useRouter()
 watch(formState, (state) => {
     if (state.status === 'success') {
         useUserStore().user = state.response
-        router.push({name: 'profile.index'})
+        router.push({name: 'profile.dashboard'})
     }
 })
 </script>
