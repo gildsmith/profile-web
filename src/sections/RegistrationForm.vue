@@ -2,8 +2,8 @@
 import {useRegistrationForm} from '../composables/registrationForm.ts'
 import PasswordStrength from '../widgets/PasswordStrength.vue'
 import FormStatusIcon from '../widgets/FormStatus.vue'
-import {watch} from 'vue'
 import {useRouter} from 'vue-router'
+import {watch} from 'vue'
 
 const {formData, formState, submitForm} = useRegistrationForm()
 const router = useRouter()

@@ -1,9 +1,9 @@
 <script setup>
 import {useAuthenticationForm} from '../composables/authenticationForm.ts'
 import FormStatusIcon from '../widgets/FormStatus.vue'
-import {watch} from 'vue'
-import {useRouter} from 'vue-router'
 import {useUserStore} from '../stores/user.js'
+import {useRouter} from 'vue-router'
+import {watch} from 'vue'
 
 const {formData, formState, submitForm} = useAuthenticationForm()
 const router = useRouter()
@@ -17,27 +17,27 @@ watch(formState, (state) => {
 </script>
 
 <template>
-    <form @submit.prevent="submitForm" class="form">
+    <form class="form" @submit.prevent="submitForm">
         <div class="wrapper">
             <label for="email">Email Address</label>
-            <input v-model="formData.email" class="input" type="email" id="email" required>
-            <div v-if="formState.errors?.email" v-text="formState.errors.email[0]" class="error"/>
+            <input id="email" v-model="formData.email" class="input" required type="email">
+            <div v-if="formState.errors?.email" class="error" v-text="formState.errors.email[0]"/>
         </div>
         <div class="wrapper">
             <label for="password">Password</label>
-            <input v-model="formData.password" class="input" type="password" id="password" required>
-            <div v-if="formState.errors?.password" v-text="formState.errors.password[0]" class="error"/>
+            <input id="password" v-model="formData.password" class="input" required type="password">
+            <div v-if="formState.errors?.password" class="error" v-text="formState.errors.password[0]"/>
         </div>
         <div class="wrapper wrapper--checkbox">
             <label for="remember">Remember</label>
-            <input v-model="formData.remember" class="input" type="checkbox" id="remember">
+            <input id="remember" v-model="formData.remember" class="input" type="checkbox">
         </div>
         <div class="wrapper wrapper--button">
             <button class="button" type="submit">
                 <span>Log In</span>
                 <FormStatusIcon :status="formState.status"/>
             </button>
-            <div v-if="formState.errors?.common" v-text="formState.errors.common[0]" class="error"/>
+            <div v-if="formState.errors?.common" class="error" v-text="formState.errors.common[0]"/>
         </div>
     </form>
 </template>

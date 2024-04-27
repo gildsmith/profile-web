@@ -12,7 +12,7 @@ const children = useRouter()?.resolve({name: 'profile.dashboard'})?.matched[0]?.
         <div class="navigationContainer">
             <nav class="navigation">
                 <h1>Your Profile</h1>
-                <RouterLink v-for="child in children" :to="{name: child.name}" class="navigationUrl">
+                <RouterLink v-for="child in children" :to="{name: child.name}" class="navigationUrl" :key="child.name">
                     {{ child.meta.name }}
                 </RouterLink>
             </nav>

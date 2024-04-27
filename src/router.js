@@ -1,7 +1,7 @@
-import Login from './views/Login.vue'
-import Register from './views/Register.vue'
-import Success from './views/Success.vue'
-import Dashboard from './views/Dashboard.vue'
+import DashboardView from './views/DashboardView.vue'
+import LoginView from './views/LoginView.vue'
+import RegisterView from './views/RegisterView.vue'
+import SuccessView from './views/SuccessView.vue'
 
 // todo import dashboard children dynamically
 
@@ -9,26 +9,26 @@ export default [
     {
         name: 'profile.dashboard',
         path: '/',
-        component: Dashboard,
+        component: DashboardView,
         meta: {authenticated: true},
         children: [/* todo! */],
     },
     {
         name: 'profile.login',
         path: '/login',
-        component: Login,
+        component: LoginView,
         meta: {authenticated: false, feature: 'authentication'},
     },
     {
         name: 'profile.register',
         path: '/register',
-        component: Register,
+        component: RegisterView,
         meta: {authenticated: false, feature: 'registration'},
     },
     {
         name: 'profile.success',
         path: '/success',
-        component: Success,
+        component: SuccessView,
         meta: {feature: 'registration'},
     },
     {
