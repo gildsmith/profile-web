@@ -22,7 +22,7 @@ export function useAuthenticationForm() {
         status: 'idle',
         errors: {},
         response: {},
-    });
+    })
 
     async function submitForm() {
         formState.status = 'submitting'

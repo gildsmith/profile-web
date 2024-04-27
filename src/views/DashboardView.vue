@@ -4,7 +4,7 @@ import {useRouter} from 'vue-router'
 
 useTitle('Your Profile')
 
-const children = useRouter()?.resolve({name: 'profile.dashboard'})?.matched[0]?.children || [];
+const children = useRouter()?.resolve({name: 'profile.dashboard'})?.matched[0]?.children || []
 </script>
 
 <template>

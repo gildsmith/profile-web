@@ -15,5 +15,9 @@ export default [
                 axios: 'readonly',
             },
         },
+        rules: {
+            'quotes': ['warn', 'single'],
+            'semi': ['warn', 'never']
+        },
     },
 ]

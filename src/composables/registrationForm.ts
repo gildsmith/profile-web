@@ -20,7 +20,7 @@ export function useRegistrationForm() {
     const formState = reactive<FormState>({
         status: 'idle',
         errors: {},
-    });
+    })
 
     async function submitForm() {
         formState.status = 'submitting'
@@ -31,7 +31,7 @@ export function useRegistrationForm() {
         }).catch((error) => {
             formState.status = 'error'
             formState.errors = error.response.data.errors || {common: ['Please try again later']}
-        });
+        })
     }
 
     return {formData, formState, submitForm}
