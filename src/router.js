@@ -1,9 +1,8 @@
 import DashboardView from './views/DashboardView.vue'
-import LoginView from './views/LoginView.vue'
-import RegisterView from './views/RegisterView.vue'
-import SuccessView from './views/SuccessView.vue'
-
-// todo import dashboard children dynamically
+import AuthenticationView from './views/AuthenticationView.vue'
+import RegistrationView from './views/RegistrationView.vue'
+import RecoveryRequestView from './views/RecoveryRequestView.vue'
+import RecoveryCompletionView from './views/RecoveryCompletionView.vue'
 
 export default [
     {
@@ -11,25 +10,38 @@ export default [
         path: '/',
         component: DashboardView,
         meta: {authenticated: true},
-        children: [/* todo! */],
+        children: [/* todo! import dashboard children dynamically */],
     },
     {
-        name: 'profile.login',
+        name: 'profile.authentication',
         path: '/login',
-        component: LoginView,
+        component: AuthenticationView,
         meta: {authenticated: false, feature: 'authentication'},
     },
     {
-        name: 'profile.register',
+        name: 'profile.registration',
         path: '/register',
-        component: RegisterView,
+        component: RegistrationView,
         meta: {authenticated: false, feature: 'registration'},
     },
     {
-        name: 'profile.success',
-        path: '/success',
-        component: SuccessView,
-        meta: {feature: 'registration'},
+        name: 'profile.recovery.request',
+        path: '/recovery',
+        component: RecoveryRequestView,
+        meta: {feature: 'authentication'}
+    },
+    {
+        name: 'profile.recovery.request',
+        path: '/recovery/success',
+        component: RecoveryRequestView,
+        meta: {feature: 'authentication'}
+    },
+    {
+        name: 'profile.recovery.complete',
+        path: '/recovery/:token',
+        component: RecoveryCompletionView,
+        meta: {feature: 'authentication'},
+        props: true,
     },
     {
         name: 'profile.fallback',

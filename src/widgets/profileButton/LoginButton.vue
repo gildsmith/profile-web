@@ -2,7 +2,7 @@
 import {IconUserCircle} from '@tabler/icons-vue'
 import {ref} from 'vue'
 
-const url = ref('')
+const url = ref('#')
 
 axios.get('_gildsmith/apps/profile').then(response => {
     url.value = '/' + response.data.route + '/login'
@@ -12,7 +12,7 @@ axios.get('_gildsmith/apps/profile').then(response => {
 <template>
     <a :href="url" class="profileButton">
         <IconUserCircle size="24" stroke="1.5"/>
-        <div class="profileButton__text">Log In</div>
+        <span class="profileButton__text">Log In</span>
     </a>
 </template>
 

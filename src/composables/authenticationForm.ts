@@ -8,7 +8,7 @@ interface FormData {
 }
 
 interface FormState {
-    status: 'idle' | 'submitting' | 'success' | 'error';
+    state: 'idle' | 'submitting' | 'success' | 'error';
     errors: Record<string, string[]>;
 }
 
@@ -19,25 +19,25 @@ export function useAuthenticationForm() {
     })
 
     const formState = reactive<FormState>({
-        status: 'idle',
+        state: 'idle',
         errors: {},
         response: {},
     })
 
     async function submitForm() {
-        formState.status = 'submitting'
+        formState.state = 'submitting'
         formState.errors = {}
 
         axios.get('/sanctum/csrf-cookie').then(() => {
             axios.post('/api/authentication/login', formData).then(response => {
-                formState.status = 'success'
+                formState.state = 'success'
                 formState.response = response.data
             }).catch((error) => {
-                formState.status = 'error'
+                formState.state = 'error'
                 formState.errors = error.response.data.errors || {common: ['Please try again later']}
             })
         }).catch((error) => {
-            formState.status = 'error'
+            formState.state = 'error'
             formState.errors = error.response.data.errors || {common: ['Please try again later']}
         })
     }

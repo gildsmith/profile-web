@@ -12,7 +12,7 @@ axios.get('_gildsmith/apps/profile').then(response => {
 <template>
     <a :href="url" class="profileButton">
         <IconUserCircle size="24" stroke="1.5"/>
-        <div class="profileButton__text">Profile</div>
+        <span class="profileButton__text">Profile</span>
     </a>
 </template>
 

@@ -7,7 +7,7 @@ interface FormData {
 }
 
 interface FormState {
-    status: 'idle' | 'submitting' | 'success' | 'error';
+    state: 'idle' | 'submitting' | 'success' | 'error';
     errors: Record<string, string[]>;
 }
 
@@ -18,18 +18,18 @@ export function useRegistrationForm() {
     })
 
     const formState = reactive<FormState>({
-        status: 'idle',
+        state: 'idle',
         errors: {},
     })
 
     async function submitForm() {
-        formState.status = 'submitting'
+        formState.state = 'submitting'
         formState.errors = {}
 
         axios.post('/api/registration/register', formData).then(() => {
-            formState.status = 'success'
+            formState.state = 'success'
         }).catch((error) => {
-            formState.status = 'error'
+            formState.state = 'error'
             formState.errors = error.response.data.errors || {common: ['Please try again later']}
         })
     }
