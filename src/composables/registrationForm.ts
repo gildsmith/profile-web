@@ -29,7 +29,7 @@ export function useRegistrationForm() {
         axios.post('/api/registration/register', formData).then(() => {
             formState.state = 'success'
         }).catch((error) => {
-            formState.errors = error.response.data.errors || {common: ['Please try again later']}
+            formState.errors = error.response.data.errors || {common: ['Please try again later.']}
             formState.state = 'error'
         })
     }

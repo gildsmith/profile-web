@@ -22,8 +22,8 @@ export function useRecoveryRequestForm() {
 
         axios.post('/api/authentication/recovery', formData).then(() => {
             formState.state = 'success'
-        }).catch(() => {
-            formState.errors = error.response.data.errors || {common: ['Please try again later']}
+        }).catch(error => {
+            formState.errors = error.response.data.errors || {common: ['Please try again later.']}
             formState.state = 'error'
         })
     }

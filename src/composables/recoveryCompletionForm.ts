@@ -27,7 +27,7 @@ export function useRecoveryCompletionForm() {
             formState.response = response.data
             formState.state = 'success'
         }).catch(error => {
-            formState.errors = error.response.data.errors || {common: ['Please try again later']}
+            formState.errors = error.response.data.errors || {common: ['Please try again later.']}
             formState.state = 'error'
         })
     }
