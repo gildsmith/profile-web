@@ -22,8 +22,8 @@ const basePath = document.querySelector('meta[name="base-path"]')?.getAttribute(
  | ---------------------------------------------------------------------------
  | Custom Router
  | ---------------------------------------------------------------------------
- * This block attempts to dynamically imports custom router definitions from
- * the custom override file, or loads the default one.
+ | This block attempts to dynamically imports custom router definitions from
+ | the custom override file, or loads the default one.
  */
 
 const discoverCustomRouter = import.meta.glob('@/gildsmith/profile/router.js', {
@@ -44,8 +44,8 @@ const router = createRouter({
  | ---------------------------------------------------------------------------
  | Navigation Guards
  | ---------------------------------------------------------------------------
- * This block implements a navigation guard specifically designed to handle
- * authentication-based routing restrictions.
+ | This block implements a navigation guard specifically designed to handle
+ | authentication-based routing restrictions.
  */
 
 router.beforeEach(async (to) => {
