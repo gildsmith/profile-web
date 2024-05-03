@@ -1,6 +1,6 @@
 <script setup>
-import LoginButton from './profileButton/LoginButton.vue'
-import IndexButton from './profileButton/IndexButton.vue'
+import LoginButton from './ProfileButton/LoginButton.vue'
+import IndexButton from './ProfileButton/IndexButton.vue'
 import {ref} from 'vue'
 
 const authenticated = ref(false)

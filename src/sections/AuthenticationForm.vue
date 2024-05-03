@@ -1,6 +1,6 @@
 <script setup>
 import {useAuthenticationForm} from '../composables/authenticationForm.ts'
-import FormStatusIcon from '../widgets/FormStatus.vue'
+import FormStateIcon from '../widgets/FormStateIcon.vue'
 import {watch} from 'vue'
 
 const {formData, formState, submitForm} = useAuthenticationForm()
@@ -33,13 +33,16 @@ watch(formState, (formState) => {
             <div class="inputWrapper inputWrapper--button">
                 <button class="button" type="submit">
                     <span>Log In</span>
-                    <FormStatusIcon :state="formState.state"/>
+                    <FormStateIcon :state="formState.state"/>
                 </button>
-                <div v-if="formState.errors?.common" class="error" v-text="formState.errors.common[0]"/>
+                <router-link :to="{name: 'profile.registration'}" class="button button-secondary">
+                    Create New Account
+                </router-link>
             </div>
+            <div v-if="formState.errors?.common" class="error" v-text="formState.errors.common[0]"/>
         </form>
-        <router-link :to="{name: 'profile.registration'}" class="redirectButton">
-            First time here? Click here to create a new account.
+        <router-link :to="{name: 'profile.recovery'}" class="redirectButton">
+            Forgotten password?
         </router-link>
     </div>
 </template>
@@ -62,7 +65,7 @@ watch(formState, (formState) => {
 }
 
 .inputWrapper--button {
-    @apply justify-start;
+    @apply justify-start flex items-center;
 }
 
 .error {

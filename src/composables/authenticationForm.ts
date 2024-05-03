@@ -25,20 +25,20 @@ export function useAuthenticationForm() {
     })
 
     async function submitForm() {
-        formState.state = 'submitting'
         formState.errors = {}
+        formState.state = 'submitting'
 
         axios.get('/sanctum/csrf-cookie').then(() => {
             axios.post('/api/authentication/login', formData).then(response => {
-                formState.state = 'success'
                 formState.response = response.data
+                formState.state = 'success'
             }).catch((error) => {
-                formState.state = 'error'
                 formState.errors = error.response.data.errors || {common: ['Please try again later']}
+                formState.state = 'error'
             })
         }).catch((error) => {
-            formState.state = 'error'
             formState.errors = error.response.data.errors || {common: ['Please try again later']}
+            formState.state = 'error'
         })
     }
 

@@ -25,14 +25,8 @@ export default [
         meta: {authenticated: false, feature: 'registration'},
     },
     {
-        name: 'profile.recovery.request',
+        name: 'profile.recovery',
         path: '/recovery',
-        component: RecoveryRequestView,
-        meta: {feature: 'authentication'}
-    },
-    {
-        name: 'profile.recovery.request',
-        path: '/recovery/success',
         component: RecoveryRequestView,
         meta: {feature: 'authentication'}
     },

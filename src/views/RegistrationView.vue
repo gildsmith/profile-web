@@ -17,7 +17,3 @@ function success() {
     <RegistrationForm v-if="!registrationSuccessful" @success="success"/>
     <RegistrationSuccess v-if="registrationSuccessful"/>
 </template>
-
-<style scoped>
-
-</style>

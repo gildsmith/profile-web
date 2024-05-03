@@ -1,7 +1,7 @@
 <script setup>
 import {useRegistrationForm} from '../composables/registrationForm.ts'
 import PasswordStrength from '../widgets/PasswordStrength.vue'
-import FormStatusIcon from '../widgets/FormStatus.vue'
+import FormStateIcon from '../widgets/FormStateIcon.vue'
 import {watch} from 'vue'
 
 const {formData, formState, submitForm} = useRegistrationForm()
@@ -31,7 +31,7 @@ watch(formState, (formState) => {
             <div class="inputWrapper inputWrapper--button">
                 <button class="button" type="submit">
                     <span>Register</span>
-                    <FormStatusIcon :status="formState.state"/>
+                    <FormStateIcon :state="formState.state"/>
                 </button>
                 <div v-if="formState.errors?.common" class="error" v-text="formState.errors.common[0]"/>
             </div>

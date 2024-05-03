@@ -1,7 +1,7 @@
 import './bootstrap/axios'
 import ProfileButton from './widgets/ProfileButton.vue'
-import FormStatus from './widgets/FormStatus.vue'
+import FormStateIcon from './widgets/FormStateIcon.vue'
 import PasswordStrength from './widgets/PasswordStrength.vue'
 import PasswordMatch from './widgets/PasswordMatch.vue'
 
-export {ProfileButton, FormStatus, PasswordStrength, PasswordMatch}
+export {ProfileButton, FormStateIcon, PasswordStrength, PasswordMatch}

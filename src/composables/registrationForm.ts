@@ -23,14 +23,14 @@ export function useRegistrationForm() {
     })
 
     async function submitForm() {
-        formState.state = 'submitting'
         formState.errors = {}
+        formState.state = 'submitting'
 
         axios.post('/api/registration/register', formData).then(() => {
             formState.state = 'success'
         }).catch((error) => {
-            formState.state = 'error'
             formState.errors = error.response.data.errors || {common: ['Please try again later']}
+            formState.state = 'error'
         })
     }
 
