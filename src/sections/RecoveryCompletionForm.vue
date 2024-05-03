@@ -36,8 +36,7 @@ watch(formState, (formState) => {
             </div>
             <div class="inputWrapper">
                 <label for="password_confirmation">Confirm Password</label>
-                <input id="password_confirmation" v-model="formData.password_confirmation" class="input" required
-                       type="password">
+                <input id="password_confirmation" v-model="formData.password_confirmation" class="input" required type="password">
                 <PasswordMatch :confirmation="formData.password_confirmation" :password="formData.password"/>
             </div>
             <div class="inputWrapper inputWrapper--button">

@@ -4,13 +4,14 @@ import {IconArrowNarrowRight} from '@tabler/icons-vue'
 
 <template>
     <div class="successView">
-        <h1>Check your inbox 💌</h1>
+        <h1>Check Your Inbox 💌</h1>
         <span>
             If there is an account associated with your email address,
             we will send you an email containing a link to reset your password.
         </span>
+        <!-- todo -->
         <router-link :to="{name: 'profile.authentication'}" class="button">
-            <span>Log In Now</span>
+            <span>Check Your Inbox</span>
             <IconArrowNarrowRight size="16" stroke="2"/>
         </router-link>
     </div>

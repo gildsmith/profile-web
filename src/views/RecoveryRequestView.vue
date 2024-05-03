@@ -1,8 +1,8 @@
 <script setup>
-import {useTitle} from '@vueuse/core'
-import RecoveryForm from '../sections/RecoveryRequestForm.vue'
-import RecoveryCompletionSuccess from '../sections/RecoveryCompletionSuccess.vue'
 import {ref} from 'vue'
+import {useTitle} from '@vueuse/core'
+import RecoveryRequestForm from '../sections/RecoveryRequestForm.vue'
+import RecoveryRequestSuccess from '../sections/RecoveryRequestSuccess.vue'
 
 useTitle('Recover Account')
 
@@ -14,6 +14,6 @@ function success() {
 </script>
 
 <template>
-    <RecoveryForm @success="success" v-if="!recoverySuccessful"/>
-    <RecoveryCompletionSuccess v-if="recoverySuccessful"/>
+    <RecoveryRequestForm @success="success" v-if="!recoverySuccessful"/>
+    <RecoveryRequestSuccess v-if="recoverySuccessful"/>
 </template>
