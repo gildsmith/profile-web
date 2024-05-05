@@ -3,6 +3,7 @@ import AuthenticationView from './views/AuthenticationView.vue'
 import RegistrationView from './views/RegistrationView.vue'
 import RecoveryRequestView from './views/RecoveryRequestView.vue'
 import RecoveryCompletionView from './views/RecoveryCompletionView.vue'
+import routerDashboard from './default/router.dashboard.js'
 
 export default [
     {
@@ -10,7 +11,7 @@ export default [
         path: '/',
         component: DashboardView,
         meta: {authenticated: true},
-        children: [/* todo! import dashboard children dynamically */],
+        children: routerDashboard,
     },
     {
         name: 'profile.authentication',
@@ -28,7 +29,7 @@ export default [
         name: 'profile.recovery',
         path: '/recovery',
         component: RecoveryRequestView,
-        meta: {feature: 'authentication'}
+        meta: {feature: 'authentication'},
     },
     {
         name: 'profile.recovery.complete',

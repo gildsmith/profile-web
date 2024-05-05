@@ -2,27 +2,14 @@ import axios from 'axios'
 import {reactive} from 'vue'
 import {FormStateInterface} from './contracts/formState'
 
-interface FormData {
-    email: string,
-    password: string,
-}
-
-export function useRegistrationForm() {
-    const formData = reactive<FormData>({
-        email: '',
-        password: '',
-    })
-
+export function useLogoutForm() {
     const formState = reactive<FormStateInterface>({
         state: 'idle',
         errors: {},
     })
 
     async function submitForm() {
-        formState.errors = {}
-        formState.state = 'submitting'
-
-        axios.post('/api/registration/register', formData).then(() => {
+        axios.post('/api/authentication/logout').then(() => {
             formState.state = 'success'
         }).catch((error) => {
             formState.errors = error.response.data.errors || {common: ['Please try again later.']}
@@ -30,5 +17,5 @@ export function useRegistrationForm() {
         })
     }
 
-    return {formData, formState, submitForm}
+    return {formState, submitForm}
 }

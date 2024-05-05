@@ -15,13 +15,17 @@ export const useUserStore = defineStore('user', {
             await axios.get('/api/authentication/user').then(response => {
                 this.user = response.data
                 this.fetched = true
-            }).catch(() => {})
-
+            }).catch(() => {
+            })
         },
+        invalidate() {
+            this.fetched = false
+            this.user = {id: null}
+        }
     },
     getters: {
         authenticated() {
             return !!this.user.id
-        }
-    }
+        },
+    },
 })

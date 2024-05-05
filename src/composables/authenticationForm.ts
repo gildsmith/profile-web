@@ -1,15 +1,11 @@
-import {reactive} from 'vue'
 import axios from 'axios'
+import {reactive} from 'vue'
+import {FormStateInterface} from './contracts/formState'
 
 interface FormData {
     email: string,
     password: string,
     remember: boolean,
-}
-
-interface FormState {
-    state: 'idle' | 'submitting' | 'success' | 'error';
-    errors: Record<string, string[]>;
 }
 
 export function useAuthenticationForm() {
@@ -18,7 +14,7 @@ export function useAuthenticationForm() {
         password: '',
     })
 
-    const formState = reactive<FormState>({
+    const formState = reactive<FormStateInterface>({
         state: 'idle',
         errors: {},
         response: {},

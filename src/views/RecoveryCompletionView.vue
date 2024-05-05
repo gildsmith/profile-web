@@ -2,7 +2,7 @@
 import {ref} from 'vue'
 import {useTitle} from '@vueuse/core'
 import RecoveryCompletionForm from '../sections/RecoveryCompletionForm.vue'
-import RecoveryRequestSuccess from '../sections/RecoveryRequestSuccess.vue'
+import RecoveryCompletionSuccess from '../sections/RecoveryCompletionSuccess.vue'
 
 useTitle('Complete Account Recovery')
 
@@ -15,6 +15,6 @@ function success() {
 </script>
 
 <template>
-    <RecoveryCompletionForm :token="props.token" @success="success" v-if="!recoverySuccessful"/>
-    <RecoveryRequestSuccess v-if="recoverySuccessful"/>
+    <RecoveryCompletionForm v-if="!recoverySuccessful" :token="props.token" @success="success"/>
+    <RecoveryCompletionSuccess v-if="recoverySuccessful"/>
 </template>

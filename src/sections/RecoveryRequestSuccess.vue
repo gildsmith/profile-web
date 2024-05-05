@@ -1,5 +1,12 @@
 <script setup>
-import {IconArrowNarrowRight} from '@tabler/icons-vue'
+import {IconArrowUpRight} from '@tabler/icons-vue'
+import {computed} from 'vue'
+
+const props = defineProps(['inboxAddress'])
+
+const hrefAddress = computed(() => {
+    return 'https://' + props.inboxAddress.split('@')[1]
+})
 </script>
 
 <template>
@@ -9,11 +16,10 @@ import {IconArrowNarrowRight} from '@tabler/icons-vue'
             If there is an account associated with your email address,
             we will send you an email containing a link to reset your password.
         </span>
-        <!-- todo -->
-        <router-link :to="{name: 'profile.authentication'}" class="button">
-            <span>Check Your Inbox</span>
-            <IconArrowNarrowRight size="16" stroke="2"/>
-        </router-link>
+        <a :href="hrefAddress" class="button">
+            <span>Open Your Inbox ({{ hrefAddress }})</span>
+            <IconArrowUpRight size="16" stroke="2"/>
+        </a>
     </div>
 </template>
 

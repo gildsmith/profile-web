@@ -7,13 +7,15 @@ import RecoveryRequestSuccess from '../sections/RecoveryRequestSuccess.vue'
 useTitle('Recover Account')
 
 const recoverySuccessful = ref(false)
+const inboxAddress = ref('')
 
-function success() {
+function success(state, data) {
     recoverySuccessful.value = true
+    inboxAddress.value = data.email
 }
 </script>
 
 <template>
-    <RecoveryRequestForm @success="success" v-if="!recoverySuccessful"/>
-    <RecoveryRequestSuccess v-if="recoverySuccessful"/>
+    <RecoveryRequestForm v-if="!recoverySuccessful" @success="success"/>
+    <RecoveryRequestSuccess v-if="recoverySuccessful" :inbox-address="inboxAddress"/>
 </template>

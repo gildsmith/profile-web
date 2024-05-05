@@ -1,14 +1,15 @@
 <script setup>
 import {useAuthenticationForm} from '../composables/authenticationForm.ts'
-import FormStateIcon from '../widgets/FormStateIcon.vue'
 import {watch} from 'vue'
+import BaseInput from '../components/BaseInput.vue'
+import BaseButton from '../components/BaseButton.vue'
 
 const {formData, formState, submitForm} = useAuthenticationForm()
 
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
-    emit(formState.state, formState)
+    emit(formState.state, formState, formData)
 })
 </script>
 
@@ -16,30 +17,14 @@ watch(formState, (formState) => {
     <div class="formWrapper">
         <h1>Welcome Back</h1>
         <form class="form" @submit.prevent="submitForm">
-            <div class="inputWrapper">
-                <label for="email">Email Address</label>
-                <input id="email" v-model="formData.email" class="input" required type="email">
-                <div v-if="formState.errors?.email" class="error" v-text="formState.errors.email[0]"/>
-            </div>
-            <div class="inputWrapper">
-                <label for="password">Password</label>
-                <input id="password" v-model="formData.password" class="input" required type="password">
-                <div v-if="formState.errors?.password" class="error" v-text="formState.errors.password[0]"/>
-            </div>
-            <div class="inputWrapper inputWrapper--checkbox">
-                <label for="remember">Remember</label>
-                <input id="remember" v-model="formData.remember" class="input" type="checkbox">
-            </div>
-            <div class="inputWrapper inputWrapper--button">
-                <button class="button" type="submit">
-                    <span>Log In</span>
-                    <FormStateIcon :state="formState.state"/>
-                </button>
+            <BaseInput v-model="formData.email" :errors="formState.errors.email" label="Email Address" name="email"/>
+            <BaseInput v-model="formData.password" :errors="formState.errors.password" label="Password" name="password" type="password"/>
+            <BaseInput v-model="formData.remember" class="inputWrapper--checkbox" label="Remember" name="remember" type="checkbox"/>
+            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Log In">
                 <router-link :to="{name: 'profile.registration'}" class="button button-secondary">
                     Create New Account
                 </router-link>
-            </div>
-            <div v-if="formState.errors?.common" class="error" v-text="formState.errors.common[0]"/>
+            </BaseButton>
         </form>
         <router-link :to="{name: 'profile.recovery'}" class="redirectButton">
             Forgotten password?
@@ -54,22 +39,6 @@ watch(formState, (formState) => {
 
 .form {
     @apply grid gap-4;
-}
-
-.inputWrapper {
-    @apply grid gap-1;
-}
-
-.inputWrapper--checkbox {
-    @apply flex flex-row-reverse items-center justify-end;
-}
-
-.inputWrapper--button {
-    @apply justify-start flex items-center;
-}
-
-.error {
-    @apply text-sm text-red-500;
 }
 
 .redirectButton {

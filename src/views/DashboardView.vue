@@ -1,20 +1,29 @@
 <script setup>
 import {useTitle} from '@vueuse/core'
-import {useRouter} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
+import {useLogoutForm} from '../composables/logoutForm.ts'
+import {useUserStore} from '../stores/user.js'
 
 useTitle('Your Profile')
 
-const children = useRouter()?.resolve({name: 'profile.dashboard'})?.matched[0]?.children || []
+const router = useRouter()
+const children = useRoute().matched[0]?.children || []
+
+function logout() {
+    useLogoutForm().submitForm()
+    useUserStore().invalidate()
+    router.push({name: 'profile.authentication'})
+}
 </script>
 
 <template>
     <div class="container">
         <div class="navigationContainer">
             <nav class="navigation">
-                <h1>Your Profile</h1>
-                <RouterLink v-for="child in children" :to="{name: child.name}" class="navigationUrl" :key="child.name">
+                <RouterLink v-for="child in children" :key="child.name" :to="{name: child.name}" class="navigationUrl">
                     {{ child.meta.name }}
                 </RouterLink>
+                <div class="logout" @click="logout">Log Out</div>
             </nav>
         </div>
         <div class="contentContainer">
@@ -46,5 +55,9 @@ const children = useRouter()?.resolve({name: 'profile.dashboard'})?.matched[0]?.
 
 .content {
     @apply max-w-lg w-full;
+}
+
+.logout {
+    @apply text-red-500 cursor-pointer;
 }
 </style>

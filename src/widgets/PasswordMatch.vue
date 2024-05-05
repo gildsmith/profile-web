@@ -1,16 +1,20 @@
 <script setup>
-import {IconCircleCheck,IconExclamationCircle} from '@tabler/icons-vue'
+import {IconCircleCheck, IconExclamationCircle} from '@tabler/icons-vue'
 
 const props = defineProps(['password', 'confirmation'])
 </script>
 
 <template>
-    <div class="matchWrapper" v-if="props.password !== props.confirmation">
-        <div><IconExclamationCircle size="16" stroke="2"/></div>
+    <div v-if="props.password !== props.confirmation" class="matchWrapper">
+        <div>
+            <IconExclamationCircle size="16" stroke="2"/>
+        </div>
         <span>Passwords must match</span>
     </div>
-    <div class="matchWrapper matchWrapper--match" v-else>
-        <div><IconCircleCheck size="16" stroke="2"/></div>
+    <div v-else class="matchWrapper matchWrapper--match">
+        <div>
+            <IconCircleCheck size="16" stroke="2"/>
+        </div>
         <span>Passwords match</span>
     </div>
 </template>

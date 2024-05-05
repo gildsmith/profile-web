@@ -4,7 +4,8 @@ import PasswordStrength from '../widgets/PasswordStrength.vue'
 import PasswordMatch from '../widgets/PasswordMatch.vue'
 import {onMounted, watch} from 'vue'
 import {useRoute} from 'vue-router'
-import FormStateIcon from '../widgets/FormStateIcon.vue'
+import BaseInput from '../components/BaseInput.vue'
+import BaseButton from '../components/BaseButton.vue'
 
 const {formData, formState, submitForm} = useRecoveryCompletionForm()
 
@@ -18,7 +19,7 @@ onMounted(() => {
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
-    emit(formState.state, formState)
+    emit(formState.state, formState, formData)
 })
 </script>
 
@@ -28,24 +29,14 @@ watch(formState, (formState) => {
         <span>Please enter your new password below to complete the recovery of your account.</span>
         <form class="form" @submit.prevent="submitForm">
             <input id="token" v-model="formData.token" type="hidden">
-            <div class="inputWrapper">
-                <label for="password">New Password</label>
-                <input id="password" v-model="formData.password" class="input" required type="password">
+            <BaseInput v-model="formData.password" :errors="formState.errors.password" label="New Password" name="password" type="password">
                 <PasswordStrength :password="formData.password"/>
-                <div v-if="formState.errors?.password" class="error" v-text="formState.errors.password[0]"/>
-            </div>
-            <div class="inputWrapper">
-                <label for="password_confirmation">Confirm Password</label>
-                <input id="password_confirmation" v-model="formData.password_confirmation" class="input" required type="password">
+            </BaseInput>
+            <BaseInput v-model="formData.password_confirmation" :errors="formState.errors.password"
+                       label="Confirm Password" name="password_confirmation" type="password">
                 <PasswordMatch :confirmation="formData.password_confirmation" :password="formData.password"/>
-            </div>
-            <div class="inputWrapper inputWrapper--button">
-                <button class="button" type="submit">
-                    <span>Send Form</span>
-                    <FormStateIcon :state="formState.state"/>
-                </button>
-            </div>
-            <div v-if="formState.errors?.common" class="error" v-text="formState.errors.common[0]"/>
+            </BaseInput>
+            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Change Password"/>
         </form>
     </div>
 </template>

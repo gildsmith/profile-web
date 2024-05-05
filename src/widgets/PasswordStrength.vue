@@ -25,6 +25,6 @@ const strengthStyle = computed(() => {
 
 <template>
     <div class="h-1 rounded bg-slate-100">
-        <div class='h-full rounded bg-green-500 transition-all' :style="strengthStyle"/>
+        <div :style="strengthStyle" class='h-full rounded bg-green-500 transition-all'/>
     </div>
 </template>

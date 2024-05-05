@@ -7,7 +7,8 @@ const authenticated = ref(false)
 
 axios.get('/api/authentication/user').then(response => {
     authenticated.value = !!response.data.id
-}).catch(() => {})
+}).catch(() => {
+})
 </script>
 
 <template>

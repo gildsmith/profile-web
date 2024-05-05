@@ -4,10 +4,10 @@ import {IconArrowNarrowRight} from '@tabler/icons-vue'
 
 <template>
     <div class="successView">
-        <h1>Check your inbox 💌</h1>
+        <h1>Password Changed ✨</h1>
         <span>
-            If there is an account associated with your email address,
-            we will send you an email containing a link to reset your password.
+            Your password has been changed successfully. We've sent
+            a confirmation email to your registered email address.
         </span>
         <router-link :to="{name: 'profile.authentication'}" class="button">
             <span>Log In Now</span>

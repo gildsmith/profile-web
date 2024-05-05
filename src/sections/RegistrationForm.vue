@@ -1,15 +1,16 @@
 <script setup>
 import {useRegistrationForm} from '../composables/registrationForm.ts'
 import PasswordStrength from '../widgets/PasswordStrength.vue'
-import FormStateIcon from '../widgets/FormStateIcon.vue'
 import {watch} from 'vue'
+import BaseInput from '../components/BaseInput.vue'
+import BaseButton from '../components/BaseButton.vue'
 
 const {formData, formState, submitForm} = useRegistrationForm()
 
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
-        emit(formState.state)
+    emit(formState.state, formState, formData)
 })
 </script>
 
@@ -17,24 +18,15 @@ watch(formState, (formState) => {
     <div class="formWrapper">
         <h1>Create New Account</h1>
         <form class="form" @submit.prevent="submitForm">
-            <div class="inputWrapper">
-                <label for="email">Email Address</label>
-                <input id="email" v-model="formData.email" class="input" required type="email">
-                <div v-if="formState.errors?.email" class="error" v-text="formState.errors.email[0]"/>
-            </div>
-            <div class="inputWrapper">
-                <label for="password">Password</label>
-                <input id="password" v-model="formData.password" class="input" required type="password">
+            <BaseInput v-model="formData.email" :errors="formState.errors.email" label="Email Address" name="email"/>
+            <BaseInput v-model="formData.password" :errors="formState.errors.password" label="Password" name="password" type="password">
                 <PasswordStrength :password="formData.password"/>
-                <div v-if="formState.errors?.password" class="error" v-text="formState.errors.password[0]"/>
-            </div>
-            <div class="inputWrapper inputWrapper--button">
-                <button class="button" type="submit">
-                    <span>Register</span>
-                    <FormStateIcon :state="formState.state"/>
-                </button>
-                <div v-if="formState.errors?.common" class="error" v-text="formState.errors.common[0]"/>
-            </div>
+            </BaseInput>
+            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Register">
+                <router-link :to="{name: 'profile.authentication'}" class="button button-secondary">
+                    Already Have an Account
+                </router-link>
+            </BaseButton>
         </form>
         <router-link :to="{name: 'profile.authentication'}" class="redirectButton">
             Already have an account? Click here to log in.
@@ -49,18 +41,6 @@ watch(formState, (formState) => {
 
 .form {
     @apply grid gap-4;
-}
-
-.inputWrapper {
-    @apply grid gap-1;
-}
-
-.inputWrapper--button {
-    @apply justify-start;
-}
-
-.error {
-    @apply text-sm text-red-500;
 }
 
 .redirectButton {
