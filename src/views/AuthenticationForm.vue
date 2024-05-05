@@ -1,10 +1,10 @@
 <script setup>
-import {useAuthenticationForm} from '../composables/authenticationForm.ts'
+import {useAuthenticateUser} from '../composables/authenticateUser.ts'
 import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
-const {formData, formState, submitForm} = useAuthenticationForm()
+const {formData, formState, submitForm} = useAuthenticateUser()
 
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 

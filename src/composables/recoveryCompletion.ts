@@ -1,8 +1,8 @@
 import axios from 'axios'
 import {reactive} from 'vue'
-import {FormStateInterface} from './contracts/formState'
+import {FormStateInterface, catchFormError} from './contracts/formState'
 
-export function useRecoveryCompletionForm() {
+export function useRecoveryCompletion() {
     const formData = reactive({
         token: '',
         email: '',
@@ -22,10 +22,7 @@ export function useRecoveryCompletionForm() {
         axios.post('/api/authentication/recovery/' + formData.token, formData).then(response => {
             formState.response = response.data
             formState.state = 'success'
-        }).catch(error => {
-            formState.errors = error.response.data.errors || {common: ['Please try again later.']}
-            formState.state = 'error'
-        })
+        }).catch((error) => catchFormError(error, formState))
     }
 
     return {formData, formState, submitForm}

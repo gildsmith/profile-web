@@ -1,4 +1,4 @@
-import ChangePassword from './views/Dashboard/ChangePassword.vue'
+import ChangePassword from './pages/Dashboard/ChangePassword.vue'
 
 export default [
     {

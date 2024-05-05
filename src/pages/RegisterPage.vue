@@ -1,8 +1,8 @@
 <script setup>
-import RegistrationForm from '../sections/RegistrationForm.vue'
+import RegistrationForm from '../views/RegistrationForm.vue'
 import {useTitle} from '@vueuse/core'
 import {ref} from 'vue'
-import RegistrationSuccess from '../sections/RegistrationSuccess.vue'
+import RegistrationSuccess from '../views/RegistrationSuccess.vue'
 
 useTitle('Create New Account')
 

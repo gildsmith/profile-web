@@ -1,7 +1,7 @@
 <script setup>
 import {useTitle} from '@vueuse/core'
 import {useRoute, useRouter} from 'vue-router'
-import {useLogoutForm} from '../composables/logoutForm.ts'
+import {useLogoutUser} from '../composables/logoutUser.ts'
 import {useUserStore} from '../stores/user.js'
 
 useTitle('Your Profile')
@@ -10,7 +10,7 @@ const router = useRouter()
 const children = useRoute().matched[0]?.children || []
 
 function logout() {
-    useLogoutForm().submitForm()
+    useLogoutUser().submitForm()
     useUserStore().invalidate()
     router.push({name: 'profile.authentication'})
 }

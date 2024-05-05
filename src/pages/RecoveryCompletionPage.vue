@@ -1,8 +1,8 @@
 <script setup>
 import {ref} from 'vue'
 import {useTitle} from '@vueuse/core'
-import RecoveryCompletionForm from '../sections/RecoveryCompletionForm.vue'
-import RecoveryCompletionSuccess from '../sections/RecoveryCompletionSuccess.vue'
+import RecoveryCompletionForm from '../views/RecoveryCompletionForm.vue'
+import RecoveryCompletionSuccess from '../views/RecoveryCompletionSuccess.vue'
 
 useTitle('Complete Account Recovery')
 

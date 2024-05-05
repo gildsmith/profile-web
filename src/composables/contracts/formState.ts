@@ -1,8 +1,13 @@
 type formState = 'idle' | 'submitting' | 'success' | 'error'
 
 interface FormStateInterface {
-    state: 'idle' | 'submitting' | 'success' | 'error';
+    state: formState;
     errors: Record<string, string[]>;
 }
 
-export {formState, FormStateInterface}
+function catchFormError(error, formState) {
+    formState.errors = error.response.data.errors || {common: ['Please try again later.']}
+    formState.state = 'error'
+}
+
+export {formState, catchFormError, FormStateInterface}

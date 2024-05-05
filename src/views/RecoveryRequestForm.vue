@@ -1,10 +1,10 @@
 <script setup>
-import {useRecoveryRequestForm} from '../composables/recoveryRequestForm.ts'
+import {useRecoveryRequest} from '../composables/recoveryRequest.ts'
 import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
-const {formData, formState, submitForm} = useRecoveryRequestForm()
+const {formData, formState, submitForm} = useRecoveryRequest()
 
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 

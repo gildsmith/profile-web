@@ -1,8 +1,8 @@
 <script setup>
 import {ref} from 'vue'
 import {useTitle} from '@vueuse/core'
-import RecoveryRequestForm from '../sections/RecoveryRequestForm.vue'
-import RecoveryRequestSuccess from '../sections/RecoveryRequestSuccess.vue'
+import RecoveryRequestForm from '../views/RecoveryRequestForm.vue'
+import RecoveryRequestSuccess from '../views/RecoveryRequestSuccess.vue'
 
 useTitle('Recover Account')
 

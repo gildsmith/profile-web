@@ -1,11 +1,11 @@
 <script setup>
-import {useRegistrationForm} from '../composables/registrationForm.ts'
+import {useRegisterUser} from '../composables/registerUser.ts'
 import PasswordStrength from '../widgets/PasswordStrength.vue'
 import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
-const {formData, formState, submitForm} = useRegistrationForm()
+const {formData, formState, submitForm} = useRegisterUser()
 
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 

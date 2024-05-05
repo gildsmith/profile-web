@@ -1,17 +1,12 @@
 import axios from 'axios'
 import {reactive} from 'vue'
-import {FormStateInterface} from './contracts/formState'
+import {FormStateInterface, catchFormError} from './contracts/formState'
 
-interface FormData {
-    email: string,
-    password: string,
-    remember: boolean,
-}
-
-export function useAuthenticationForm() {
-    const formData = reactive<FormData>({
+export function useAuthenticateUser() {
+    const formData = reactive({
         email: '',
         password: '',
+        remember: false,
     })
 
     const formState = reactive<FormStateInterface>({
@@ -28,14 +23,8 @@ export function useAuthenticationForm() {
             axios.post('/api/authentication/login', formData).then(response => {
                 formState.response = response.data
                 formState.state = 'success'
-            }).catch((error) => {
-                formState.errors = error.response.data.errors || {common: ['Please try again later.']}
-                formState.state = 'error'
-            })
-        }).catch((error) => {
-            formState.errors = error.response.data.errors || {common: ['Please try again later.']}
-            formState.state = 'error'
-        })
+            }).catch((error) => catchFormError(error, formState))
+        }).catch((error) => catchFormError(error, formState))
     }
 
     return {formData, formState, submitForm}

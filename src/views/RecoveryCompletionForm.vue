@@ -1,5 +1,5 @@
 <script setup>
-import {useRecoveryCompletionForm} from '../composables/recoveryCompletionForm.ts'
+import {useRecoveryCompletion} from '../composables/recoveryCompletion.ts'
 import PasswordStrength from '../widgets/PasswordStrength.vue'
 import PasswordMatch from '../widgets/PasswordMatch.vue'
 import {onMounted, watch} from 'vue'
@@ -7,7 +7,7 @@ import {useRoute} from 'vue-router'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
-const {formData, formState, submitForm} = useRecoveryCompletionForm()
+const {formData, formState, submitForm} = useRecoveryCompletion()
 
 const props = defineProps(['token'])
 

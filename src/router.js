@@ -1,8 +1,8 @@
-import DashboardView from './views/DashboardView.vue'
-import AuthenticationView from './views/AuthenticationView.vue'
-import RegistrationView from './views/RegistrationView.vue'
-import RecoveryRequestView from './views/RecoveryRequestView.vue'
-import RecoveryCompletionView from './views/RecoveryCompletionView.vue'
+import DashboardView from './pages/DashboardPage.vue'
+import AuthenticationView from './pages/LoginPage.vue'
+import RegistrationView from './pages/RegisterPage.vue'
+import RecoveryRequestView from './pages/RecoveryRequestPage.vue'
+import RecoveryCompletionView from './pages/RecoveryCompletionPage.vue'
 import routerDashboard from './default/router.dashboard.js'
 
 export default [
