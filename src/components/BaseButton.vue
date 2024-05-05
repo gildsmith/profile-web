@@ -1,5 +1,6 @@
 <script setup>
-import FormStateIcon from '../widgets/FormStateIcon.vue'
+
+import FormStateIcon from './FormStateIcon.vue'
 
 const props = defineProps({
     label: String,
