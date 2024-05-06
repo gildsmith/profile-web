@@ -1,6 +1,14 @@
 <script setup>
 import {IconAlertTriangle, IconArrowNarrowRight, IconCheck, IconLoader} from '@tabler/icons-vue'
 
+/*
+ | ---------------------------------------------------------------------------
+ | Form State Icon Component
+ | ---------------------------------------------------------------------------
+ | Displays an icon representing the current state of a form. Corresponds to
+ | formState.ts composable.
+ */
+
 const props = defineProps({
     state: {type: String, default: 'idle'},
 })

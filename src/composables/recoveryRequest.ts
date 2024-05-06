@@ -1,9 +1,14 @@
 import axios from 'axios'
 import {reactive} from 'vue'
-import {FormStateInterface, catchFormError} from './contracts/formState'
+import {catchFormError, FormStateInterface, handleFormSuccess} from './contracts/formState'
 
+/**
+ * Composable for requesting a password recovery. This composable
+ * provides basic components to create a form for requesting
+ * a password recovery link via email.
+ */
 export function useRecoveryRequest() {
-    const formData = reactive({
+    const formModel = reactive({
         email: '',
     })
 
@@ -16,10 +21,10 @@ export function useRecoveryRequest() {
         formState.state = 'submitting'
         formState.errors = {}
 
-        axios.post('/api/authentication/recovery', formData).then(() => {
-            formState.state = 'success'
-        }).catch((error) => catchFormError(error, formState))
+        axios.post('/api/authentication/recovery', formModel)
+            .then(response => handleFormSuccess(response, formState))
+            .catch(error => catchFormError(error, formState))
     }
 
-    return {formData, formState, submitForm}
+    return {formModel, formState, submitForm}
 }

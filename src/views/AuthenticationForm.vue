@@ -4,12 +4,12 @@ import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
-const {formData, formState, submitForm} = useAuthenticateUser()
+const {formModel, formState, submitForm} = useAuthenticateUser()
 
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
-    emit(formState.state, formState, formData)
+    emit(formState.state, formState, formModel)
 })
 </script>
 
@@ -17,9 +17,9 @@ watch(formState, (formState) => {
     <div class="formWrapper">
         <h1>Welcome Back</h1>
         <form class="form" @submit.prevent="submitForm">
-            <BaseInput v-model="formData.email" :errors="formState.errors.email" label="Email Address" name="email"/>
-            <BaseInput v-model="formData.password" :errors="formState.errors.password" label="Password" name="password" type="password"/>
-            <BaseInput v-model="formData.remember" class="inputWrapper--checkbox" label="Remember" name="remember" type="checkbox"/>
+            <BaseInput v-model="formModel.email" :errors="formState.errors.email" label="Email Address" name="email"/>
+            <BaseInput v-model="formModel.password" :errors="formState.errors.password" label="Password" name="password" type="password"/>
+            <BaseInput v-model="formModel.remember" class="inputWrapper--checkbox" label="Remember" name="remember" type="checkbox"/>
             <BaseButton :errors="formState.errors.common" :state="formState.state" label="Log In">
                 <router-link :to="{name: 'profile.registration'}" class="button button-secondary">
                     Create New Account

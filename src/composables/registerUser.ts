@@ -1,9 +1,13 @@
 import axios from 'axios'
 import {reactive} from 'vue'
-import {FormStateInterface, catchFormError} from './contracts/formState'
+import {catchFormError, FormStateInterface, handleFormSuccess} from './contracts/formState'
 
+/**
+ * Composable for registering a new user. This composable provides
+ * basic components to create a form for user registration.
+ */
 export function useRegisterUser() {
-    const formData = reactive({
+    const formModel = reactive({
         email: '',
         password: '',
     })
@@ -17,10 +21,10 @@ export function useRegisterUser() {
         formState.errors = {}
         formState.state = 'submitting'
 
-        axios.post('/api/registration/register', formData).then(() => {
-            formState.state = 'success'
-        }).catch((error) => catchFormError(error, formState))
+        axios.post('/api/registration/register', formModel)
+            .then(response => handleFormSuccess(response, formState))
+            .catch(error => catchFormError(error, formState))
     }
 
-    return {formData, formState, submitForm}
+    return {formModel, formState, submitForm}
 }

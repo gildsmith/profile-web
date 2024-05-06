@@ -1,9 +1,14 @@
 import axios from 'axios'
 import {reactive} from 'vue'
-import {FormStateInterface, catchFormError} from './contracts/formState'
+import {catchFormError, FormStateInterface, handleFormSuccess} from './contracts/formState'
 
+/**
+ * Composable for completing a password recovery process. This
+ * composable provides basic components to create a form for
+ * resetting user's password with token-email pair.
+ */
 export function useRecoveryCompletion() {
-    const formData = reactive({
+    const formModel = reactive({
         token: '',
         email: '',
         password: '',
@@ -13,17 +18,17 @@ export function useRecoveryCompletion() {
     const formState = reactive<FormStateInterface>({
         state: 'idle',
         errors: {},
+        response: {},
     })
 
     async function submitForm() {
         formState.errors = {}
         formState.state = 'submitting'
 
-        axios.post('/api/authentication/recovery/' + formData.token, formData).then(response => {
-            formState.response = response.data
-            formState.state = 'success'
-        }).catch((error) => catchFormError(error, formState))
+        axios.post('/api/authentication/recovery/' + formModel.token, formModel)
+            .then(response => handleFormSuccess(response, formState))
+            .catch(error => catchFormError(error, formState))
     }
 
-    return {formData, formState, submitForm}
+    return {formModel, formState, submitForm}
 }

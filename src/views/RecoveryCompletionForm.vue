@@ -7,19 +7,18 @@ import {useRoute} from 'vue-router'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
-const {formData, formState, submitForm} = useRecoveryCompletion()
+const {formModel, formState, submitForm} = useRecoveryCompletion()
 
+const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 const props = defineProps(['token'])
 
 onMounted(() => {
-    formData.token = props.token
-    formData.email = useRoute().query.email
+    formModel.token = props.token
+    formModel.email = useRoute().query.email
 })
 
-const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
-
 watch(formState, (formState) => {
-    emit(formState.state, formState, formData)
+    emit(formState.state, formState, formModel)
 })
 </script>
 
@@ -28,13 +27,12 @@ watch(formState, (formState) => {
         <h1>Complete Account Recovery</h1>
         <span>Please enter your new password below to complete the recovery of your account.</span>
         <form class="form" @submit.prevent="submitForm">
-            <input id="token" v-model="formData.token" type="hidden">
-            <BaseInput v-model="formData.password" :errors="formState.errors.password" label="New Password" name="password" type="password">
-                <PasswordStrength :password="formData.password"/>
+            <input id="token" v-model="formModel.token" type="hidden">
+            <BaseInput v-model="formModel.password" :errors="formState.errors.password" label="New Password" name="password" type="password">
+                <PasswordStrength :password="formModel.password"/>
             </BaseInput>
-            <BaseInput v-model="formData.password_confirmation" :errors="formState.errors.password"
-                       label="Confirm Password" name="password_confirmation" type="password">
-                <PasswordMatch :confirmation="formData.password_confirmation" :password="formData.password"/>
+            <BaseInput v-model="formModel.password_confirmation" label="Confirm Password" name="password_confirmation" type="password">
+                <PasswordMatch :confirmation="formModel.password_confirmation" :password="formModel.password"/>
             </BaseInput>
             <BaseButton :errors="formState.errors.common" :state="formState.state" label="Change Password"/>
         </form>
@@ -48,17 +46,5 @@ watch(formState, (formState) => {
 
 .form {
     @apply grid gap-4;
-}
-
-.inputWrapper {
-    @apply grid gap-1;
-}
-
-.inputWrapper--button {
-    @apply justify-start;
-}
-
-.error {
-    @apply text-sm text-red-500;
 }
 </style>

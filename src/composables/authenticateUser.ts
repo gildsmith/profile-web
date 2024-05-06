@@ -1,9 +1,15 @@
 import axios from 'axios'
 import {reactive} from 'vue'
-import {FormStateInterface, catchFormError} from './contracts/formState'
+import {catchFormError, FormStateInterface, handleFormSuccess} from './contracts/formState'
 
+/**
+ * This composable provides basic components to create reactive forms that
+ * allow authenticating users. It follows Laravel Sanctum documentation.
+ *
+ * @see https://laravel.com/docs/11.x/sanctum#csrf-protection
+ */
 export function useAuthenticateUser() {
-    const formData = reactive({
+    const formModel = reactive({
         email: '',
         password: '',
         remember: false,
@@ -20,12 +26,11 @@ export function useAuthenticateUser() {
         formState.state = 'submitting'
 
         axios.get('/sanctum/csrf-cookie').then(() => {
-            axios.post('/api/authentication/login', formData).then(response => {
-                formState.response = response.data
-                formState.state = 'success'
-            }).catch((error) => catchFormError(error, formState))
-        }).catch((error) => catchFormError(error, formState))
+            axios.post('/api/authentication/login', formModel)
+                .then((response) => handleFormSuccess(response, formState))
+                .catch(error => catchFormError(error, formState))
+        }).catch(error => catchFormError(error, formState))
     }
 
-    return {formData, formState, submitForm}
+    return {formModel, formState, submitForm}
 }

@@ -6,15 +6,11 @@ const props = defineProps(['password', 'confirmation'])
 
 <template>
     <div v-if="props.password !== props.confirmation" class="matchWrapper">
-        <div>
-            <IconExclamationCircle size="16" stroke="2"/>
-        </div>
+        <IconExclamationCircle size="16" stroke="2"/>
         <span>Passwords must match</span>
     </div>
-    <div v-else class="matchWrapper matchWrapper--match">
-        <div>
-            <IconCircleCheck size="16" stroke="2"/>
-        </div>
+    <div v-if="props.password === props.confirmation" class="matchWrapper matchWrapper--match">
+        <IconCircleCheck size="16" stroke="2"/>
         <span>Passwords match</span>
     </div>
 </template>
@@ -28,11 +24,10 @@ const props = defineProps(['password', 'confirmation'])
     @apply text-emerald-500;
 }
 
+
+// Adjusts the vertical position of the text to align
+// perfectly with the icon by shifting it slightly downward.
 .matchWrapper > span {
-    /*
-     * Adjusts the vertical position of the text to align
-     * perfectly with the icon by shifting it slightly downward.
-     */
     transform: translateY(1px);
 }
 </style>

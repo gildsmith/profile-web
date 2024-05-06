@@ -1,4 +1,11 @@
-// noinspection JSUnresolvedReference
+/*
+ | ---------------------------------------------------------------------------
+ | Dashboard Router
+ | ---------------------------------------------------------------------------
+ | Similar to router.js, but searches specifically for child routes related
+ | to the 'profile.dashboard' routes. This allows dynamically extending the
+ | dashboard view.
+ */
 
 const vendorRouteFiles = import.meta.glob([
     '@composer/*/*/resources/js/profile/router.dashboard.{ts,js}',

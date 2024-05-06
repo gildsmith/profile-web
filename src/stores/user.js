@@ -21,7 +21,7 @@ export const useUserStore = defineStore('user', {
         invalidate() {
             this.fetched = false
             this.user = {id: null}
-        }
+        },
     },
     getters: {
         authenticated() {
