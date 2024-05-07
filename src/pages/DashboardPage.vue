@@ -3,6 +3,7 @@ import {useTitle} from '@vueuse/core'
 import {useRoute, useRouter} from 'vue-router'
 import {useLogoutUser} from '../composables/logoutUser.ts'
 import {useUserStore} from '../stores/user.js'
+import {useI18n} from 'vue-i18n'
 
 /*
  | ---------------------------------------------------------------------------
@@ -16,8 +17,9 @@ import {useUserStore} from '../stores/user.js'
  | Learn more here: https://github.com/gildsmith/profile-client/wiki/Dashboard
  */
 
-useTitle('Your Profile')
+useTitle('User account')
 
+const {t} = useI18n()
 const router = useRouter()
 const children = useRoute().matched[0]?.children || []
 
@@ -31,11 +33,11 @@ function logout() {
 <template>
     <div class="dashboard">
         <nav class="navigation">
-            <h1>Your Profile</h1>
+            <h1>{{ t('User account') }}</h1>
             <RouterLink v-for="(child, key) in children" :key="key" :to="{name: child.name}" class="navigationUrl">
-                {{ child.meta.name }}
+                {{ t(child.meta.name) }}
             </RouterLink>
-            <div class="logout" @click="logout">Log Out</div>
+            <div class="logout" @click="logout">{{ t('Log out') }}</div>
         </nav>
         <div class="contentContainer">
             <RouterView/>

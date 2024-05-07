@@ -5,7 +5,7 @@ export default [
         name: 'profile.dashboard.password',
         component: ChangePassword,
         path: '/password',
-        meta: {name: 'Change Password'},
+        meta: {name: 'Change password'},
     },
 
 ]

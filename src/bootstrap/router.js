@@ -16,6 +16,7 @@ import {createRouter, createWebHistory} from 'vue-router'
  | The retrieved base path is then used to configure the Vue Router's history
  | mode, ensuring proper routing behavior within the application.
  */
+
 const basePath = document.querySelector('meta[name="base-path"]')?.getAttribute('content')
 
 /*
