@@ -1,33 +1,36 @@
 <script setup>
 import {useAuthenticateUser} from '../composables/authenticateUser.ts'
+import {useI18n} from 'vue-i18n'
 import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
+const {t, locale} = useI18n()
 const {formModel, formState, submitForm} = useAuthenticateUser()
-
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
     emit(formState.state, formState, formModel)
 })
+
+locale.value = 'pl'
 </script>
 
 <template>
     <div class="formWrapper">
-        <h1>Welcome Back</h1>
+        <h1>{{ t('Welcome back') }}</h1>
         <form class="form" @submit.prevent="submitForm">
-            <BaseInput v-model="formModel.email" :errors="formState.errors.email" label="Email Address" name="email"/>
+            <BaseInput v-model="formModel.email" :errors="formState.errors.email" label="Email address" name="email"/>
             <BaseInput v-model="formModel.password" :errors="formState.errors.password" label="Password" name="password" type="password"/>
-            <BaseInput v-model="formModel.remember" class="inputWrapper--checkbox" label="Remember" name="remember" type="checkbox"/>
-            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Log In">
+            <BaseInput v-model="formModel.remember" class="inputWrapper--checkbox" label="Remember me" name="remember" type="checkbox"/>
+            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Log in">
                 <router-link :to="{name: 'profile.registration'}" class="button button-secondary">
-                    Create New Account
+                    {{ t('Create new account') }}
                 </router-link>
             </BaseButton>
         </form>
         <router-link :to="{name: 'profile.recovery'}" class="redirectButton">
-            Forgotten password?
+            {{ t('Forgotten password?') }}
         </router-link>
     </div>
 </template>

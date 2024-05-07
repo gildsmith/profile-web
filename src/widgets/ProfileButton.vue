@@ -1,7 +1,9 @@
 <script setup>
 import {ref} from 'vue'
 import {IconUserCircle} from '@tabler/icons-vue'
+import {useI18n} from 'vue-i18n'
 
+const {t} = useI18n()
 const authenticated = ref(false)
 const url = ref('')
 
@@ -18,11 +20,11 @@ axios.get('/_gildsmith/apps/profile').then(response => {
 <template>
     <a v-if="!authenticated" :href="url" class="profileButton">
         <IconUserCircle size="24" stroke="1.5"/>
-        <span>Log In</span>
+        <span>{{ t('Log in') }}</span>
     </a>
     <a v-if="authenticated" :href="url + '/login'" class="profileButton">
         <IconUserCircle size="24" stroke="1.5"/>
-        <span>Profile</span>
+        <span>{{ t('Profile') }}</span>
     </a>
 </template>
 

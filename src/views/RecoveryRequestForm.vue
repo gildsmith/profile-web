@@ -3,9 +3,10 @@ import {useRecoveryRequest} from '../composables/recoveryRequest.ts'
 import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
+import {useI18n} from 'vue-i18n'
 
+const {t} = useI18n()
 const {formModel, formState, submitForm} = useRecoveryRequest()
-
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
@@ -15,16 +16,13 @@ watch(formState, (formState) => {
 
 <template>
     <div class="formWrapper">
-        <h1>Recover Account</h1>
-        <span>
-            If there is an account associated with your email address,
-            we will send you an email containing a link to reset your password.
-        </span>
+        <h1>{{ t('Recover account') }}</h1>
+        <span>{{ t('If there is an account associated with your email address, we will send you an email containing a link to reset your password.') }}</span>
         <form class="form" @submit.prevent="submitForm">
-            <BaseInput v-model="formModel.email" :errors="formState.errors.email" label="Email Address" type="email"/>
-            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Send Form">
+            <BaseInput v-model="formModel.email" :errors="formState.errors.email" label="Email address" type="email"/>
+            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Send form">
                 <router-link :to="{name: 'profile.authentication'}" class="button button-secondary">
-                    Back to Login
+                    {{ t('Back to login') }}
                 </router-link>
             </BaseButton>
         </form>

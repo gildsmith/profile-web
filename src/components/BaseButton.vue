@@ -1,5 +1,6 @@
 <script setup>
 import FormStateIcon from './FormStateIcon.vue'
+import {useI18n} from 'vue-i18n'
 
 /*
  | ---------------------------------------------------------------------------
@@ -16,6 +17,7 @@ import FormStateIcon from './FormStateIcon.vue'
  |   the label. Accepts values: 'idle', 'submitting', 'success' and 'error'.
  */
 
+const {t} = useI18n()
 const props = defineProps({
     label: {type: String, default: ''},
     type: {type: String, default: 'submit'},
@@ -28,7 +30,7 @@ const props = defineProps({
     <div class="buttonContainer">
         <div class="buttonWrapper">
             <button :type="props.type" class="button">
-                <span>{{ label }}</span>
+                <span>{{ t(label) }}</span>
                 <FormStateIcon :state="state"/>
             </button>
             <slot/>

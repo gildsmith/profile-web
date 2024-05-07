@@ -6,9 +6,10 @@ import {onMounted, watch} from 'vue'
 import {useRoute} from 'vue-router'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
+import {useI18n} from 'vue-i18n'
 
+const {t} = useI18n()
 const {formModel, formState, submitForm} = useRecoveryCompletion()
-
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 const props = defineProps(['token'])
 
@@ -24,17 +25,17 @@ watch(formState, (formState) => {
 
 <template>
     <div class="formWrapper">
-        <h1>Complete Account Recovery</h1>
-        <span>Please enter your new password below to complete the recovery of your account.</span>
+        <h1>{{ t('Complete account recovery') }}</h1>
+        <span>{{ t('Please enter your new password below to complete the recovery of your account.') }}</span>
         <form class="form" @submit.prevent="submitForm">
             <input id="token" v-model="formModel.token" type="hidden">
-            <BaseInput v-model="formModel.password" :errors="formState.errors.password" label="New Password" name="password" type="password">
+            <BaseInput v-model="formModel.password" :errors="formState.errors.password" label="New password" name="password" type="password">
                 <PasswordStrength :password="formModel.password"/>
             </BaseInput>
-            <BaseInput v-model="formModel.password_confirmation" label="Confirm Password" name="password_confirmation" type="password">
+            <BaseInput v-model="formModel.password_confirmation" label="Confirm password" name="password_confirmation" type="password">
                 <PasswordMatch :confirmation="formModel.password_confirmation" :password="formModel.password"/>
             </BaseInput>
-            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Change Password"/>
+            <BaseButton :errors="formState.errors.common" :state="formState.state" label="Change password"/>
         </form>
     </div>
 </template>

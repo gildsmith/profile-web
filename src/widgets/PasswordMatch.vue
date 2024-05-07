@@ -1,17 +1,19 @@
 <script setup>
 import {IconCircleCheck, IconExclamationCircle} from '@tabler/icons-vue'
+import {useI18n} from 'vue-i18n'
 
+const {t} = useI18n()
 const props = defineProps(['password', 'confirmation'])
 </script>
 
 <template>
     <div v-if="props.password !== props.confirmation" class="matchWrapper">
         <IconExclamationCircle size="16" stroke="2"/>
-        <span>Passwords must match</span>
+        <span>{{ t('Passwords must match') }}</span>
     </div>
     <div v-if="props.password === props.confirmation" class="matchWrapper matchWrapper--match">
         <IconCircleCheck size="16" stroke="2"/>
-        <span>Passwords match</span>
+        <span>{{ t('Passwords match') }}</span>
     </div>
 </template>
 

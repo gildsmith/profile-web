@@ -1,4 +1,6 @@
 <script setup>
+import {useI18n} from 'vue-i18n'
+
 /*
  | ---------------------------------------------------------------------------
  | Form Input Component
@@ -14,6 +16,8 @@
  | - errors: An array of error messages to display below the input field.
  */
 
+const {t} = useI18n()
+const model = defineModel()
 const props = defineProps({
     label: String,
     name: String,
@@ -21,13 +25,11 @@ const props = defineProps({
     errors: {type: Array, default: () => []},
     required: {type: Boolean, default: false}
 })
-
-const model = defineModel()
 </script>
 
 <template>
     <div class="inputWrapper">
-        <label v-if="props.label" :for="props.name" v-text="props.label"/>
+        <label v-if="props.label" :for="props.name" v-text="t(props.label)"/>
         <input :id="props.name" v-model="model" :name="props.name" :type="props.type" class="input" :required="required"/>
         <slot/>
         <div v-for="(error, key) in props.errors" :key="key" class="error" v-text="error"/>

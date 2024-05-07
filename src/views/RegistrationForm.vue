@@ -4,9 +4,10 @@ import PasswordStrength from '../widgets/PasswordStrength.vue'
 import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
+import {useI18n} from 'vue-i18n'
 
+const {t} = useI18n()
 const {formModel, formState, submitForm} = useRegisterUser()
-
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
@@ -24,12 +25,12 @@ watch(formState, (formState) => {
             </BaseInput>
             <BaseButton :errors="formState.errors.common" :state="formState.state" label="Register">
                 <router-link :to="{name: 'profile.authentication'}" class="button button-secondary">
-                    Already Have an Account
+                    {{ t('Powrót do logowania') }}
                 </router-link>
             </BaseButton>
         </form>
         <router-link :to="{name: 'profile.authentication'}" class="redirectButton">
-            Already have an account? Click here to log in.
+            {{ t('Already have an account? Click here to log in.') }}
         </router-link>
     </div>
 </template>
