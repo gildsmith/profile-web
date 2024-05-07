@@ -19,6 +19,7 @@ const props = defineProps({
     name: String,
     type: {type: String, default: 'text'},
     errors: {type: Array, default: () => []},
+    required: {type: Boolean, default: false}
 })
 
 const model = defineModel()
@@ -27,7 +28,7 @@ const model = defineModel()
 <template>
     <div class="inputWrapper">
         <label v-if="props.label" :for="props.name" v-text="props.label"/>
-        <input :id="props.name" v-model="model" :name="props.name" :type="props.type" class="input"/>
+        <input :id="props.name" v-model="model" :name="props.name" :type="props.type" class="input" :required="required"/>
         <slot/>
         <div v-for="(error, key) in props.errors" :key="key" class="error" v-text="error"/>
     </div>

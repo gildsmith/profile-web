@@ -6,6 +6,7 @@
  | as well as the default routing of this package, and merges them. Vendor
  | routes take precedence over default routes, allowing overrides.
  */
+
 const vendorRouteFiles = import.meta.glob([
     '@composer/*/*/resources/js/profile/router.{ts,js}',
     '@npm/*/*/resources/js/profile/router.{ts,js}',

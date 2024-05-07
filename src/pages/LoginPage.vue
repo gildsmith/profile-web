@@ -10,7 +10,7 @@ const router = useRouter()
 const store = useUserStore()
 
 function success(formState) {
-    store.user = formState.response
+    store.user = formState.response.data
     router.push({name: 'profile.dashboard'})
 }
 </script>

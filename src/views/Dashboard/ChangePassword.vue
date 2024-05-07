@@ -1,19 +1,28 @@
 <script setup>
 import BaseInput from '../../components/BaseInput.vue'
+import BaseButton from '../../components/BaseButton.vue'
+import PasswordStrength from '../../widgets/PasswordStrength.vue'
+import PasswordMatch from '../../widgets/PasswordMatch.vue'
+import {useChangePassword} from '../../composables/changePassword.ts'
+
+const {formModel, formState, submitForm} = useChangePassword()
 </script>
 
 <template>
-    <div class="changePassword">
-        <h1>Change Password (WIP)</h1>
-
-        <BaseInput label="Old Password" name="password" type="password"/>
-
-        <label for="password">Old Password</label>
-        <input id="password" class="input" name="password" type="password">
-
-        <label for="new_password">New Password</label>
-        <input id="new_password" class="input" name="new_password" type="password">
-    </div>
+    <form class="changePassword" @submit.prevent="submitForm">
+        <h1>Change Password</h1>
+        <BaseInput v-model="formModel.password" :errors="formState.errors.password"
+                   :required="true" label="Old Password" name="password" type="password"/>
+        <BaseInput v-model="formModel.new_password" :errors="formState.errors.new_password"
+                   :required="true" label="New Password" name="new_password" type="password">
+            <PasswordStrength :password="formModel.new_password"/>
+        </BaseInput>
+        <BaseInput v-model="formModel.new_password_confirmation" :errors="formState.errors.new_password_confirmation"
+                   :required="true" label="Confirm New Password" name="new_password_confirmation" type="password">
+            <PasswordMatch :confirmation="formModel.new_password_confirmation" :password="formModel.new_password"/>
+        </BaseInput>
+        <BaseButton :errors="formState.errors.common" :state="formState.state" label="Change Password"/>
+    </form>
 </template>
 
 <style scoped>

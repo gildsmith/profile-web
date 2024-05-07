@@ -10,7 +10,7 @@ axios.get('/api/authentication/user').then(response => {
 }).catch(() => {
 })
 
-axios.get('_gildsmith/apps/profile').then(response => {
+axios.get('/_gildsmith/apps/profile').then(response => {
     url.value = '/' + response.data.route
 })
 </script>
@@ -20,7 +20,7 @@ axios.get('_gildsmith/apps/profile').then(response => {
         <IconUserCircle size="24" stroke="1.5"/>
         <span>Log In</span>
     </a>
-    <a v-if="authenticated" :href="url + 'login'" class="profileButton">
+    <a v-if="authenticated" :href="url + '/login'" class="profileButton">
         <IconUserCircle size="24" stroke="1.5"/>
         <span>Profile</span>
     </a>

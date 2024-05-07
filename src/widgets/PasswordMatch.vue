@@ -24,9 +24,10 @@ const props = defineProps(['password', 'confirmation'])
     @apply text-emerald-500;
 }
 
-
-// Adjusts the vertical position of the text to align
-// perfectly with the icon by shifting it slightly downward.
+/*
+ * Adjusts the vertical position of the text to align
+ * perfectly with the icon by shifting it slightly downward.
+ */
 .matchWrapper > span {
     transform: translateY(1px);
 }

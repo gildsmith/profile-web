@@ -33,7 +33,7 @@ watch(formState, (formState) => {
 
 <style scoped>
 .formWrapper {
-    @apply flex flex-col justify-center gap-4 p-4 m-auto min-h-full max-w-sm;
+    @apply flex flex-col gap-4 p-4 m-auto max-w-sm;
 }
 
 .form {
