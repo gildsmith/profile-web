@@ -32,7 +32,7 @@ const props = defineProps({
         <label v-if="props.label" :for="props.name" v-text="t(props.label)"/>
         <input :id="props.name" v-model="model" :name="props.name" :type="props.type" class="input" :required="required"/>
         <slot/>
-        <div v-for="(error, key) in props.errors" :key="key" class="error" v-text="error"/>
+        <div v-for="(error, key) in props.errors" :key="key" class="error" v-text="t(error)"/>
     </div>
 </template>
 

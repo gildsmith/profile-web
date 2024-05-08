@@ -32,7 +32,7 @@ watch(formState, (formState) => {
             <BaseInput v-model="formModel.password" :errors="formState.errors.password" label="New password" name="password" type="password">
                 <PasswordStrength :password="formModel.password"/>
             </BaseInput>
-            <BaseInput v-model="formModel.password_confirmation" label="Confirm password" name="password_confirmation" type="password">
+            <BaseInput v-model="formModel.password_confirmation" label="Confirm new password" name="password_confirmation" type="password">
                 <PasswordMatch :confirmation="formModel.password_confirmation" :password="formModel.password"/>
             </BaseInput>
             <BaseButton :errors="formState.errors.common" :state="formState.state" label="Change password"/>

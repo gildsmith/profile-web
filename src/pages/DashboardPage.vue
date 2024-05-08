@@ -4,6 +4,7 @@ import {useRoute, useRouter} from 'vue-router'
 import {useLogoutUser} from '../composables/logoutUser.ts'
 import {useUserStore} from '../stores/user.js'
 import {useI18n} from 'vue-i18n'
+import {computed} from 'vue'
 
 /*
  | ---------------------------------------------------------------------------
@@ -22,6 +23,11 @@ useTitle('User account')
 const {t} = useI18n()
 const router = useRouter()
 const children = useRoute().matched[0]?.children || []
+const navChildren = computed(() => {
+    return children.filter(child => {
+        return child.meta?.name.length > 1
+    })
+})
 
 function logout() {
     useLogoutUser().submitForm()
@@ -34,7 +40,7 @@ function logout() {
     <div class="dashboard">
         <nav class="navigation">
             <h1>{{ t('User account') }}</h1>
-            <RouterLink v-for="(child, key) in children" :key="key" :to="{name: child.name}" class="navigationUrl">
+            <RouterLink v-for="(child, key) in navChildren" :key="key" :to="{name: child.name}" class="navigationUrl">
                 {{ t(child.meta.name) }}
             </RouterLink>
             <div class="logout" @click="logout">{{ t('Log out') }}</div>

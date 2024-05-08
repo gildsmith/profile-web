@@ -1,13 +1,16 @@
 <script setup>
 import {IconArrowNarrowRight} from '@tabler/icons-vue'
+import {useI18n} from 'vue-i18n'
+
+const {t} = useI18n()
 </script>
 
 <template>
     <div class="successView">
-        <h1>Registration Successful! 🎉</h1>
-        <span>Your account needs verification. Please check your email for instructions.</span>
+        <h1>{{ t('Registration successful!')}}</h1>
+        <span>{{ t('Your account needs verification. Please check your email for instructions.') }}</span>
         <router-link :to="{name: 'profile.authentication'}" class="button">
-            <span>Log In Now</span>
+            <span>{{ t('Log in') }}</span>
             <IconArrowNarrowRight size="16" stroke="2"/>
         </router-link>
     </div>

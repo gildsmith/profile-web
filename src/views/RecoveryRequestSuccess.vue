@@ -1,25 +1,18 @@
 <script setup>
-import {IconArrowUpRight} from '@tabler/icons-vue'
-import {computed} from 'vue'
+import {IconArrowRight} from '@tabler/icons-vue'
+import {useI18n} from 'vue-i18n'
 
-const props = defineProps(['inboxAddress'])
-
-const hrefAddress = computed(() => {
-    return 'https://' + props.inboxAddress.split('@')[1]
-})
+const {t} = useI18n()
 </script>
 
 <template>
     <div class="successView">
-        <h1>Check Your Inbox 💌</h1>
-        <span>
-            If there is an account associated with your email address,
-            we will send you an email containing a link to reset your password.
-        </span>
-        <a :href="hrefAddress" class="button">
-            <span>Open Your Inbox ({{ hrefAddress }})</span>
-            <IconArrowUpRight size="16" stroke="2"/>
-        </a>
+        <h1>{{ t('Check your inbox 💌') }}</h1>
+        <span>{{ t('If there is an account associated with your email address, we will send you an email containing a link to reset your password.') }}</span>
+        <RouterLink :to="{ name: 'profile.authentication'}" class="button">
+            <span>{{ t('Back to login') }}</span>
+            <IconArrowRight size="16" stroke="2"/>
+        </RouterLink>
     </div>
 </template>
 

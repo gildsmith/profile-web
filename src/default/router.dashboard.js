@@ -8,6 +8,7 @@
  */
 
 const vendorRouteFiles = import.meta.glob([
+    '@/gildsmith/profile/router.dashboard.{ts,js}',
     '@composer/*/*/resources/js/profile/router.dashboard.{ts,js}',
     '@npm/*/*/resources/js/profile/router.dashboard.{ts,js}',
 ], {

@@ -17,7 +17,7 @@ watch(formState, (formState) => {
 
 <template>
     <div class="formWrapper">
-        <h1>Create New Account</h1>
+        <h1>{{ t('Create new account') }}</h1>
         <form class="form" @submit.prevent="submitForm">
             <BaseInput v-model="formModel.email" :errors="formState.errors.email" label="Email Address" name="email"/>
             <BaseInput v-model="formModel.password" :errors="formState.errors.password" label="Password" name="password" type="password">
@@ -25,7 +25,7 @@ watch(formState, (formState) => {
             </BaseInput>
             <BaseButton :errors="formState.errors.common" :state="formState.state" label="Register">
                 <router-link :to="{name: 'profile.authentication'}" class="button button-secondary">
-                    {{ t('Powrót do logowania') }}
+                    {{ t('Back to login') }}
                 </router-link>
             </BaseButton>
         </form>
