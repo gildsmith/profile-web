@@ -7,15 +7,20 @@
  | routes take precedence over default routes, allowing overrides.
  */
 
+const customRoutesFile = import.meta.glob('@/gildsmith/profile/routes.js', {
+    import: 'default',
+    eager: true,
+})
+
 const vendorRoutesFiles = import.meta.glob([
-    '@composer/*/*/resources/js/profile/router.{ts,js}',
-    '@npm/*/*/resources/js/profile/router.{ts,js}',
+    '@composer/*/*/resources/js/profile/routes.{ts,js}',
+    '@npm/*/*/resources/js/profile/routes.{ts,js}',
 ], {
     import: 'default',
     eager: true,
 })
 
-const defaultRoutesFile = import.meta.glob('./routes/routes.js', {
+const defaultRoutesFile = import.meta.glob('./routes.js', {
     import: 'default',
     eager: true,
 })
@@ -23,4 +28,5 @@ const defaultRoutesFile = import.meta.glob('./routes/routes.js', {
 export default [
     ...Object.values(defaultRoutesFile).flat(),
     ...Object.values(vendorRoutesFiles).flat(),
+    ...Object.values(customRoutesFile).flat(),
 ]

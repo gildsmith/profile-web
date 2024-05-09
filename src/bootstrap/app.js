@@ -12,7 +12,8 @@ import defaultApp from '../default/App.vue'
  */
 
 const discoverCustomApp = import.meta.glob('@/gildsmith/profile/App.vue', {
-    import: 'default', eager: true,
+    import: 'default',
+    eager: true,
 })
 
 const customApp = Object.values(discoverCustomApp)

@@ -1,9 +1,9 @@
-import DashboardView from '../../pages/DashboardPage.vue'
-import AuthenticationView from '../../pages/LoginPage.vue'
-import RegistrationView from '../../pages/RegisterPage.vue'
-import RecoveryRequestView from '../../pages/RecoveryRequestPage.vue'
-import RecoveryCompletionView from '../../pages/RecoveryCompletionPage.vue'
-import routerDashboard from '../router.dashboard.js'
+import DashboardView from '../pages/DashboardPage.vue'
+import AuthenticationView from '../pages/LoginPage.vue'
+import RegistrationView from '../pages/RegisterPage.vue'
+import RecoveryRequestView from '../pages/RecoveryRequestPage.vue'
+import RecoveryCompletionView from '../pages/RecoveryCompletionPage.vue'
+import routerDashboard from './router.dashboard.js'
 
 export default [
     {
