@@ -22,6 +22,6 @@ const defaultRouteFile = import.meta.glob('../router.dashboard.js', {
 })
 
 export default [
-    ...Object.values(vendorRouteFiles).flat(),
     ...Object.values(defaultRouteFile).flat(),
+    ...Object.values(vendorRouteFiles).flat(),
 ]

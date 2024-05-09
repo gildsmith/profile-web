@@ -5,15 +5,13 @@ import {watch} from 'vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseButton from '../components/BaseButton.vue'
 
-const {t, locale} = useI18n()
+const {t} = useI18n()
 const {formModel, formState, submitForm} = useAuthenticateUser()
 const emit = defineEmits(['idle', 'submitting', 'success', 'error'])
 
 watch(formState, (formState) => {
     emit(formState.state, formState, formModel)
 })
-
-locale.value = 'pl'
 </script>
 
 <template>
