@@ -11,7 +11,7 @@ const store = useUserStore()
 
 function success(formState) {
     store.user = formState.response.data
-    router.push({name: 'profile.dashboard'})
+    router.push({name: 'profile.dashboard.index'})
 }
 </script>
 
