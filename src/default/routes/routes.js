@@ -41,6 +41,6 @@ export default [
     {
         name: 'profile.fallback',
         path: '/:fallback(.*)*',
-        redirect: {name: 'profile.dashboard'},
+        redirect: {name: 'profile.dashboard.index'},
     },
 ]
