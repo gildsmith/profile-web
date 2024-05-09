@@ -1,5 +1,5 @@
-import ChangePassword from './views/Dashboard/ChangePassword.vue'
-import DashboardIndex from './views/Dashboard/DashboardIndex.vue'
+import ChangePassword from '../../views/Dashboard/ChangePassword.vue'
+import DashboardIndex from '../../views/Dashboard/DashboardIndex.vue'
 
 export default [
     {

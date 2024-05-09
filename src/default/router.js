@@ -7,7 +7,7 @@
  | routes take precedence over default routes, allowing overrides.
  */
 
-const vendorRouteFiles = import.meta.glob([
+const vendorRoutesFiles = import.meta.glob([
     '@composer/*/*/resources/js/profile/router.{ts,js}',
     '@npm/*/*/resources/js/profile/router.{ts,js}',
 ], {
@@ -15,12 +15,12 @@ const vendorRouteFiles = import.meta.glob([
     eager: true,
 })
 
-const defaultRouteFile = import.meta.glob('../router.js', {
+const defaultRoutesFile = import.meta.glob('./routes/routes.js', {
     import: 'default',
     eager: true,
 })
 
 export default [
-    ...Object.values(vendorRouteFiles).flat(),
-    ...Object.values(defaultRouteFile).flat(),
+    ...Object.values(defaultRoutesFile).flat(),
+    ...Object.values(vendorRoutesFiles).flat(),
 ]

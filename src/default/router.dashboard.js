@@ -7,8 +7,12 @@
  | dashboard view.
  */
 
-const vendorRouteFiles = import.meta.glob([
-    '@/gildsmith/profile/router.dashboard.{ts,js}',
+const customRoutesFiles = import.meta.glob('@/gildsmith/profile/router.dashboard.{ts,js}', {
+    import: 'default',
+    eager: true,
+})
+
+const vendorRoutesFiles = import.meta.glob([
     '@composer/*/*/resources/js/profile/router.dashboard.{ts,js}',
     '@npm/*/*/resources/js/profile/router.dashboard.{ts,js}',
 ], {
@@ -16,12 +20,13 @@ const vendorRouteFiles = import.meta.glob([
     eager: true,
 })
 
-const defaultRouteFile = import.meta.glob('../router.dashboard.js', {
+const defaultRoutesFile = import.meta.glob('./routes/routes.dashboard.js', {
     import: 'default',
     eager: true,
 })
 
 export default [
-    ...Object.values(defaultRouteFile).flat(),
-    ...Object.values(vendorRouteFiles).flat(),
+    ...Object.values(defaultRoutesFile).flat(),
+    ...Object.values(vendorRoutesFiles).flat(),
+    ...Object.values(customRoutesFiles).flat(),
 ]
