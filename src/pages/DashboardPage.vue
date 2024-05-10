@@ -25,7 +25,7 @@ const router = useRouter()
 const children = useRoute().matched[0]?.children || []
 const navChildren = computed(() => {
     return children.filter(child => {
-        return child.meta?.name.length > 1
+        return child.meta?.name?.length > 1
     })
 })
 
