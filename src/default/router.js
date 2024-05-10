@@ -12,12 +12,12 @@ const customRoutesFile = import.meta.glob('@/gildsmith/profile/routes.js', {
     eager: true,
 })
 
-const composerRouteFiles = import.meta.glob('@composer/*/*/resources/js/gildsmith/profile/router.{ts,js}', {
+const composerRouteFiles = import.meta.glob('@composer/*/*/resources/js/gildsmith/profile/routes.{ts,js}', {
     import: 'default',
     eager: true,
 })
 
-const npmRouteFiles = import.meta.glob('@npm/*/*/src/gildsmith/profile/router.{ts,js}', {
+const npmRouteFiles = import.meta.glob('@npm/*/*/src/gildsmith/profile/routes.{ts,js}', {
     import: 'default',
     eager: true,
 })
