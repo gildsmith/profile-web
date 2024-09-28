@@ -1,12 +1,13 @@
 <script setup>
-import {useRecoveryCompletion} from '../composables/recoveryCompletion.ts'
-import PasswordStrength from '../widgets/PasswordStrength.vue'
-import PasswordMatch from '../widgets/PasswordMatch.vue'
 import {onMounted, watch} from 'vue'
-import {useRoute} from 'vue-router'
-import BaseInput from '../components/BaseInput.vue'
-import BaseButton from '../components/BaseButton.vue'
 import {useI18n} from 'vue-i18n'
+import {useRoute} from 'vue-router'
+
+import BaseButton from '../components/BaseButton.vue'
+import BaseInput from '../components/BaseInput.vue'
+import {useRecoveryCompletion} from '../composables/recoveryCompletion.ts'
+import PasswordMatch from '../widgets/PasswordMatch.vue'
+import PasswordStrength from '../widgets/PasswordStrength.vue'
 
 const {t} = useI18n()
 const {formModel, formState, submitForm} = useRecoveryCompletion()

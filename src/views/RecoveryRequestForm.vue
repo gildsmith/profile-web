@@ -1,9 +1,10 @@
 <script setup>
-import {useRecoveryRequest} from '../composables/recoveryRequest.ts'
 import {watch} from 'vue'
-import BaseInput from '../components/BaseInput.vue'
-import BaseButton from '../components/BaseButton.vue'
 import {useI18n} from 'vue-i18n'
+
+import BaseButton from '../components/BaseButton.vue'
+import BaseInput from '../components/BaseInput.vue'
+import {useRecoveryRequest} from '../composables/recoveryRequest.ts'
 
 const {t} = useI18n()
 const {formModel, formState, submitForm} = useRecoveryRequest()

@@ -1,10 +1,11 @@
 <script setup>
-import BaseInput from '../../components/BaseInput.vue'
-import BaseButton from '../../components/BaseButton.vue'
-import PasswordStrength from '../../widgets/PasswordStrength.vue'
-import PasswordMatch from '../../widgets/PasswordMatch.vue'
-import {useChangePassword} from '../../composables/changePassword.ts'
 import {useI18n} from 'vue-i18n'
+
+import BaseButton from '../../components/BaseButton.vue'
+import BaseInput from '../../components/BaseInput.vue'
+import {useChangePassword} from '../../composables/changePassword.ts'
+import PasswordMatch from '../../widgets/PasswordMatch.vue'
+import PasswordStrength from '../../widgets/PasswordStrength.vue'
 
 const {t} = useI18n()
 const {formModel, formState, submitForm} = useChangePassword()

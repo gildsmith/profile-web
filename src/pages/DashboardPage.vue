@@ -1,10 +1,11 @@
 <script setup>
 import {useTitle} from '@vueuse/core'
+import {computed} from 'vue'
+import {useI18n} from 'vue-i18n'
 import {useRoute, useRouter} from 'vue-router'
+
 import {useLogoutUser} from '../composables/logoutUser.ts'
 import {useUserStore} from '../stores/user.js'
-import {useI18n} from 'vue-i18n'
-import {computed} from 'vue'
 
 /*
  | ---------------------------------------------------------------------------

@@ -1,9 +1,10 @@
 <script setup>
-import {useAuthenticateUser} from '../composables/authenticateUser.ts'
-import {useI18n} from 'vue-i18n'
 import {watch} from 'vue'
-import BaseInput from '../components/BaseInput.vue'
+import {useI18n} from 'vue-i18n'
+
 import BaseButton from '../components/BaseButton.vue'
+import BaseInput from '../components/BaseInput.vue'
+import {useAuthenticateUser} from '../composables/authenticateUser.ts'
 
 const {t} = useI18n()
 const {formModel, formState, submitForm} = useAuthenticateUser()

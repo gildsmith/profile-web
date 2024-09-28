@@ -1,6 +1,7 @@
 <script setup>
-import {ref} from 'vue'
 import {useTitle} from '@vueuse/core'
+import {ref} from 'vue'
+
 import RecoveryCompletionForm from '../views/RecoveryCompletionForm.vue'
 import RecoveryCompletionSuccess from '../views/RecoveryCompletionSuccess.vue'
 

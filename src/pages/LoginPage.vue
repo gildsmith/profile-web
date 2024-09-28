@@ -1,8 +1,9 @@
 <script setup>
 import {useTitle} from '@vueuse/core'
-import AuthenticationForm from '../views/AuthenticationForm.vue'
-import {useUserStore} from '../stores/user.js'
 import {useRouter} from 'vue-router'
+
+import {useUserStore} from '../stores/user.js'
+import AuthenticationForm from '../views/AuthenticationForm.vue'
 
 useTitle('Log In')
 

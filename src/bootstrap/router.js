@@ -1,9 +1,10 @@
 // noinspection JSFileReferences, JSUnresolvedReference, JSCheckFunctionSignatures
 
+import {createRouter, createWebHistory} from 'vue-router'
+
+import defaultRouter from '../default/router.js'
 import {useFeaturesStore} from '../stores/features.js'
 import {useUserStore} from '../stores/user.js'
-import defaultRouter from '../default/router.js'
-import {createRouter, createWebHistory} from 'vue-router'
 
 /*
  | ---------------------------------------------------------------------------

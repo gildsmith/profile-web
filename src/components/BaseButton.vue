@@ -1,6 +1,7 @@
 <script setup>
-import FormStateIcon from './FormStateIcon.vue'
 import {useI18n} from 'vue-i18n'
+
+import FormStateIcon from './FormStateIcon.vue'
 
 /*
  | ---------------------------------------------------------------------------

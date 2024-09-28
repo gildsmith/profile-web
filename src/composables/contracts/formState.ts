@@ -27,4 +27,4 @@ function handleFormSuccess(response, formState: FormStateInterface) {
     formState.state = 'success'
 }
 
-export {FormState, catchFormError, handleFormSuccess, FormStateInterface}
+export {catchFormError, FormState, FormStateInterface,handleFormSuccess}

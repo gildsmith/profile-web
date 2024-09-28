@@ -1,6 +1,7 @@
 <script setup>
-import {ref} from 'vue'
 import {useTitle} from '@vueuse/core'
+import {ref} from 'vue'
+
 import RecoveryRequestForm from '../views/RecoveryRequestForm.vue'
 import RecoveryRequestSuccess from '../views/RecoveryRequestSuccess.vue'
 
