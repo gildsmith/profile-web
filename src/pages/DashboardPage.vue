@@ -15,7 +15,7 @@ import {computed} from 'vue'
  | It is extensible via Vue Router, specifically by creating child routes
  | under this page. They're then programmatically displayed in the navigation.
  |
- | Learn more here: https://github.com/gildsmith/profile-client/wiki/Dashboard
+ | Learn more here: https://github.com/gildsmith/profile-web/wiki/Dashboard
  */
 
 useTitle('User account')

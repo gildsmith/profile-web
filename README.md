@@ -13,7 +13,7 @@ This package is included as part of the
 To install the Profile Client separately, run the following command:
 
 ```
-npm i @gildsmith/profile-client
+npm i @gildsmith/profile-web
 ```
 
 To integrate the Gildsmith Profile Client into your project, you need
